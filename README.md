@@ -1,24 +1,8 @@
-# README
+日記アプリを作成する
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+日々何を感じたのかを曜日とともにかく
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+作りたい機能
+・文章での日記の投稿
+・その日ごとの文章の分析(感情や特徴)
+・事実と感情の推移(自動でのまとめ)
