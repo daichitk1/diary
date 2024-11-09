@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :memos
   resources :posts
   root 'posts#index'  # オプション：トップページに投稿一覧を表示
   get "home/index"

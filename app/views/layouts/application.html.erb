@@ -13,9 +13,20 @@
     <link rel="icon" href="/icon.png" type="image/png">
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/icon.png">
+    
   </head>
-
-  <body class="container">
-    <%= yield %>
-  </body>
+  <div class="all">
+    <header class="title bg-primary">
+      <h1>猫と山と人生</h1>
+    </header>
+    <%= link_to 'タスク一覧', posts_path, class: "btn btn-primary" %>
+    <body >
+    
+      <%= yield %>
+  
+    </body>
+    <footer class="bg-secondary h-25">
+    
+    </footer>
+  </div>
 </html>

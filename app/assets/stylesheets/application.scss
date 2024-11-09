@@ -1,7 +1,37 @@
 @import "bootstrap";
+@import "simple_calendar";
+.all {
+  width:1500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.title {
+  width: 1400px;   // 固定幅
+  height: 70px;  // 自動で左右中央揃え
+}
+.main-content {
+  flex: 1;  /* メインコンテンツが残りのスペースを占める */
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.diary {
+  width: 1000px; 
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 250px;
+  background-color: #f4f4f4;
+}
 
 .container {
-    width: 1000px;   // 固定幅
-    margin-left: auto;
-    margin-right: auto;  // 自動で左右中央揃え
-  }
+  display: flex;  /* Flexboxを使用 */
+  justify-content: space-between;  /* サイドバーとメインコンテンツをスペースを空けて配置 */
+  gap: 20px;  /* サイドバーとメインコンテンツの間隔 */
+  margin: 20px;
+}

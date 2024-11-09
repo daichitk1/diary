@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
     def index
       @posts = Post.all
+      @memos = Memo.all
     end
   
     def new
@@ -15,11 +16,19 @@ class PostsController < ApplicationController
         render :new
       end
     end
+
+    def show
+      @post=Post.find_by(params[:id])
+    end
   
     private
   
     def post_params
-      params.require(:post).permit(:title, :content)
+      params.require(:post).permit(:title, :content, :start_time)
+    end
+
+    def memo_params
+      params.require(:memo).permit(:title, :content)
     end
   end
   
