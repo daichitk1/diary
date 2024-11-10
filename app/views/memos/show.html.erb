@@ -1,10 +1,8 @@
 <p style="color: green"><%= notice %></p>
-
+<%= link_to "メモ一覧", memos_path, class: "btn btn-outline-primary"   %>
+<%= link_to "メモ編集", edit_memo_path(@memo), class: "btn btn-outline-primary" %>
 <%= render @memo %>
 
 <div>
-  <%= link_to "Edit this memo", edit_memo_path(@memo) %> |
-  <%= link_to "Back to memos", memos_path %>
-
   <%= button_to "Destroy this memo", @memo, method: :delete %>
 </div>

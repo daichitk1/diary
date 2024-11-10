@@ -1,4 +1,5 @@
 class MemosController < ApplicationController
+  before_action :logged_in_user
   before_action :set_memo, only: %i[ show edit update destroy ]
 
   # GET /memos or /memos.json
@@ -15,7 +16,7 @@ class MemosController < ApplicationController
     @memo = Memo.new
     @memo.title = Date.today.strftime("%Y-%m-%d")  # titleに今日の日付を設定
     @memos = Memo.all
-    if @memos.where(title: @memo.title)
+    if @memos.where(title: @memo.title).present?
       redirect_to edit_memo_path(Memo.find_by(title: @memo.title))
     end
   end

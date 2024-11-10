@@ -1,37 +1,54 @@
 @import "bootstrap";
 @import "simple_calendar";
 .all {
-  width:1500px;
+  width:1800px;
+ 
   margin-left: auto;
   margin-right: auto;
+  background-color: #ffffff;
+  height:1300px;
 }
 .title {
-  width: 1400px;   // 固定幅
+  // 固定幅
   height: 70px;  // 自動で左右中央揃え
 }
 .main-content {
-  flex: 1;  /* メインコンテンツが残りのスペースを占める */
+  /* メインコンテンツが残りのスペースを占める */
   padding: 20px;
-  background-color: #fff;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #ffffff;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  height:1300px;
 }
 
 .diary {
   width: 1000px; 
 }
 
-.sidebar {
-  position: fixed;
+.side-bar {
   top: 0;
-  left: 0;
   height: 100%;
-  width: 250px;
-  background-color: #f4f4f4;
+  height:1300px;
+  width:500px;
+  background-color: #ffffff;
+  height:1300px;
 }
 
 .container {
   display: flex;  /* Flexboxを使用 */
   justify-content: space-between;  /* サイドバーとメインコンテンツをスペースを空けて配置 */
-  gap: 20px;  /* サイドバーとメインコンテンツの間隔 */
+  gap: 10px;  /* サイドバーとメインコンテンツの間隔 */
   margin: 20px;
+  height:1300px;
+}
+
+.right {
+  position: absolute;
+  right: 0; /* 右寄せ */
+}
+
+.text {
+  width: 1500px;
+  height: 700px;
 }

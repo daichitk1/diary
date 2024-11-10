@@ -1,16 +1,15 @@
 <p style="color: green"><%= notice %></p>
-
+<%= link_to "新規メモ", new_memo_path, class: "btn btn-primary"  %>
 <% content_for :title, "Memos" %>
 
-<h1>Memos</h1>
+<h1>メモ一覧</h1>
 
 <div id="memos">
   <% @memos.each do |memo| %>
-    <%= render memo %>
+     <%= memo.title %>
     <p>
-      <%= link_to "Show this memo", memo %>
+      <%= link_to "このメモを見る", memo %>
     </p>
   <% end %>
 </div>
 
-<%= link_to "New memo", new_memo_path %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_11_09_145307) do
+ActiveRecord::Schema[7.2].define(version: 2024_11_10_045025) do
   create_table "memos", force: :cascade do |t|
     t.string "title", null: false
     t.text "content", null: false
@@ -24,5 +24,14 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_09_145307) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.datetime "start_time"
+    t.integer "status", default: 0, null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.string "password_digest"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 end

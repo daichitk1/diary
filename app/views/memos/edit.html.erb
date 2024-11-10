@@ -1,12 +1,11 @@
 <% content_for :title, "Editing memo" %>
 
-<h1>Editing memo</h1>
-
+<h1>メモ編集ページ</h1>
+<div>
+  <%= link_to "メモ詳細", @memo %> |
+  <%= link_to "メモ一覧", memos_path %>
+</div>
 <%= render "form", memo: @memo %>
 
 <br>
 
-<div>
-  <%= link_to "Show this memo", @memo %> |
-  <%= link_to "Back to memos", memos_path %>
-</div>
