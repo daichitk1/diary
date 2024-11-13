@@ -22,6 +22,12 @@
 
   </div>
 
+  <div class="form-group">
+    <%= form.label :important_status, '重要度' %>
+    <%= form.select :important_status, Post.important_statuses.keys.map { |important_status| [I18n.t("activerecord.attributes.post.important_statuses.#{important_status}",locale: :ja), important_status] }, {}, class: 'form-control' %>
+
+  </div>
+
   <%= form.submit '出力', class: "btn btn-outline-primary" %>
 <% end %>
 

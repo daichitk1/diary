@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_11_13_015250) do
+ActiveRecord::Schema[7.2].define(version: 2024_11_13_061138) do
   create_table "memos", force: :cascade do |t|
     t.string "title", null: false
     t.text "content", null: false
@@ -33,6 +33,8 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_13_015250) do
     t.datetime "updated_at", null: false
     t.datetime "start_time"
     t.integer "status", default: 0, null: false
+    t.boolean "simportant_status"
+    t.integer "important_status", default: 0, null: false
   end
 
   create_table "users", force: :cascade do |t|
