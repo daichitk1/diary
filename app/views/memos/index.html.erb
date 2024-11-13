@@ -8,7 +8,7 @@
   <% @memos.each do |memo| %>
      <%= memo.title %>
     <p>
-      <%= link_to "このメモを見る", memo %>
+      <%= link_to "このメモを見る", memo, class: "btn btn-primary" %>
     </p>
   <% end %>
 </div>

@@ -16,9 +16,6 @@ class MemosController < ApplicationController
     @memo = Memo.new
     @memo.title = Date.today.strftime("%Y-%m-%d")  # titleに今日の日付を設定
     @memos = Memo.all
-    if @memos.where(title: @memo.title).present?
-      redirect_to edit_memo_path(Memo.find_by(title: @memo.title))
-    end
   end
 
   # GET /memos/1/edit

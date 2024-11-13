@@ -2,7 +2,9 @@
 <p>ログイン中です。メールアドレス: <%= current_user.email %></p>
   <%= render 'posts/logged_in' %>
 <% else %>
-<p>ログインしていません。</p>
+<div class="m-5">
+  <p>ログインしていません。</p>
   <%= render 'posts/not_logged_in' %>
+</div>
 <% end %>
 

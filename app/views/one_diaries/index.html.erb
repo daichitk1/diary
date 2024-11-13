@@ -8,9 +8,9 @@
   <% @one_diaries.each do |one_diary| %>
     <%= render one_diary %>
     <p>
-      <%= link_to "Show this one diary", one_diary %>
+      <%= link_to "日記詳細", one_diary, class: "btn btn-primary" %>
     </p>
   <% end %>
 </div>
 
-<%= link_to "New one diary", new_one_diary_path %>
+<%= link_to "新規作成", new_one_diary_path, class: "btn btn-primary" %>

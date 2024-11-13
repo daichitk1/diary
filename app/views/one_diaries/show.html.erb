@@ -3,8 +3,8 @@
 <%= render @one_diary %>
 
 <div>
-  <%= link_to "Edit this one diary", edit_one_diary_path(@one_diary) %> |
-  <%= link_to "Back to one diaries", one_diaries_path %>
+  <%= link_to "編集", edit_one_diary_path(@one_diary), class: "btn btn-primary" %> |
+  <%= link_to "日記一覧", one_diaries_path, class: "btn btn-primary" %>
 
-  <%= button_to "Destroy this one diary", @one_diary, method: :delete %>
+  <%= button_to "削除", @one_diary, method: :delete, class: "btn btn-danger" %>
 </div>

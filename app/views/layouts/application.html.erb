@@ -15,16 +15,19 @@
     <link rel="apple-touch-icon" href="/icon.png">
     
   </head>
+
   <div class="all">
     <header class="title bg-primary">
       <h1>猫と山と人生</h1>
     </header>
-    <%= link_to 'メインページ', posts_path, class: "btn btn-primary" %>
-    <%= link_to 'タスク一覧', posts_all_path, class: "btn btn-secondary" %>
-    <%= link_to '日記一覧', one_diaries_path, class: "btn btn-primary" %>
-    <%= link_to 'メモ一覧', memos_path, class: "btn btn-success" %>
-    <%= link_to '新規メモ', new_memo_path, class: "btn btn-success" %>
-    <%= button_to 'ログアウト', logout_path, method: :delete, data: { confirm: '本当にログアウトしますか' }, class: "btn btn-danger my-3" %>
+    <% if logged_in? %> 
+      <%= link_to 'メインページ', posts_path, class: "btn btn-primary" %>
+      <%= link_to 'タスク一覧', posts_all_path, class: "btn btn-secondary" %>
+      <%= link_to '日記一覧', one_diaries_path, class: "btn btn-primary" %>
+      <%= link_to 'メモ一覧', memos_path, class: "btn btn-success" %>
+      <%= link_to '新規メモ', new_memo_path, class: "btn btn-success" %>
+      <%= button_to 'ログアウト', logout_path, method: :delete, data: { confirm: '本当にログアウトしますか' }, class: "btn btn-danger my-3" %>
+    <% end %>
     <body >
       <%= yield %>
   

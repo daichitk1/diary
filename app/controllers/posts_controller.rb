@@ -1,9 +1,10 @@
 class PostsController < ApplicationController
-  before_action :logged_in_user, only:[:edit, :update]
+  before_action :logged_in_user
     def index
       today = Date.today
-      @unprocessed_posts = Post.where(created_at: today.beginning_of_day..today.end_of_day,status: 0).order(created_at: :desc).limit(5)
-      @progress_posts = Post.where(created_at: today.beginning_of_day..today.end_of_day,status: 1).order(created_at: :desc).limit(5)
+      @important_posts = Post.where(important_status: 1).order(created_at: :desc)
+      @unprocessed_posts = Post.where(created_at: today.beginning_of_day..today.end_of_day,status: 0, important_status: 0).order(created_at: :desc).limit(5)
+      @progress_posts = Post.where(created_at: today.beginning_of_day..today.end_of_day,status: 1, important_status: 0).order(created_at: :desc).limit(5)
       @posts = Post.all
       @one_diaries = OneDiary.all 
       @memos = Memo.all
@@ -57,7 +58,7 @@ class PostsController < ApplicationController
     private
   
     def post_params
-      params.require(:post).permit(:title, :content, :status, :start_time)
+      params.require(:post).permit(:title, :content, :status, :start_time, :important_status)
     end
 
     def memo_params
