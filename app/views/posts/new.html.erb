@@ -16,10 +16,10 @@
     <h3>中身</h3>
     <%= form.text_area :content %>
   </div>
-
   <div class="form-group">
     <%= form.label :status, 'ステータス' %>
-    <%= form.select :status, Post.statuses.keys.map { |status| [status.humanize, status] }, {}, class: 'form-control' %>
+    <%= form.select :status, Post.statuses.keys.map { |status| [I18n.t("activerecord.attributes.post.statuses.#{status}",locale: :ja), status] }, {}, class: 'form-control' %>
+
   </div>
 
   <%= form.submit '出力', class: "btn btn-outline-primary" %>

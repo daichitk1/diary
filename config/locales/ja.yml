@@ -1,0 +1,13 @@
+
+ja:
+  activerecord:
+    attributes:
+      post:
+        status:
+          unprocessed: 未処理
+          in_progress: 対応中
+          completed: 完了
+        statuses:
+          unprocessed: 未処理
+          in_progress: 対応中
+          completed: 完了

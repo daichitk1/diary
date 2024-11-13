@@ -10,10 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_11_10_045025) do
+ActiveRecord::Schema[7.2].define(version: 2024_11_13_015250) do
   create_table "memos", force: :cascade do |t|
     t.string "title", null: false
     t.text "content", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "one_diaries", force: :cascade do |t|
+    t.string "title"
+    t.text "content"
+    t.date "date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

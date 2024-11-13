@@ -1,0 +1,12 @@
+<% content_for :title, "Editing one diary" %>
+
+<h1>日記編集</h1>
+
+<%= render "form", one_diary: @one_diary %>
+
+<br>
+
+<div>
+  <%= link_to "Show this one diary", @one_diary %> |
+  <%= link_to "Back to one diaries", one_diaries_path %>
+</div>

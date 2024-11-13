@@ -5,6 +5,7 @@ class PostsController < ApplicationController
       @unprocessed_posts = Post.where(created_at: today.beginning_of_day..today.end_of_day,status: 0).order(created_at: :desc).limit(5)
       @progress_posts = Post.where(created_at: today.beginning_of_day..today.end_of_day,status: 1).order(created_at: :desc).limit(5)
       @posts = Post.all
+      @one_diaries = OneDiary.all 
       @memos = Memo.all
     end
   

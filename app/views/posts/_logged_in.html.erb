@@ -1,5 +1,10 @@
 <div class="container">
   <div class="side-bar"style="padding: 10px; margin-bottom: 10px; border: 1px solid #333333; border-radius: 10px;">
+  <h4>日記一覧</h4>
+  <% @one_diaries.each do |diary| %>
+    <div><%= link_to diary.date, one_diary_path(diary.id) %></div>
+  <% end %> 
+
     <h4>メモ一覧</h4>
     <% @memos.each do |memo| %>
       <div><%= link_to memo.title, memo_path(memo.id) %></div>
@@ -28,7 +33,7 @@
               <td><%= post.created_at.strftime("%Y-%m-%d") %></td> 
               <td><%= link_to post.title, edit_post_path(post) %></td> 
               <td><%= post.content %></td>
-              <td><%= post.status.humanize %></td>
+              <td><%= I18n.t("activerecord.attributes.post.status.#{post.status}", locale: :ja) %></td>
             </tr>
           <% end %>
         </tbody>
@@ -52,7 +57,8 @@
                 <td><%= post.created_at.strftime("%Y-%m-%d") %></td> 
                 <td><%= link_to post.title, edit_post_path(post.id) %></td> 
                 <td><%= post.content %></td>
-                <td><%= post.status.humanize %></td>
+                <td><%= I18n.t("activerecord.attributes.post.status.#{post.status}", locale: :ja) %></td>
+            </tr>
               </tr>
             <% end %>
           </tbody>
