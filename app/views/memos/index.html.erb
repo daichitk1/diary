@@ -6,10 +6,10 @@
 
 <div id="memos">
   <% @memos.each do |memo| %>
-     <%= memo.title %>
-    <p>
-      <%= link_to "このメモを見る", memo, class: "btn btn-primary" %>
-    </p>
+    <div>
+      <%= link_to memo.title, memo %>
+    
+    </div>
   <% end %>
 </div>
 

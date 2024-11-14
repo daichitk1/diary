@@ -29,6 +29,7 @@
       <%= button_to 'ログアウト', logout_path, method: :delete, data: { confirm: '本当にログアウトしますか' }, class: "btn btn-danger my-3" %>
     <% end %>
     <body >
+      <h2><%= Time.now.strftime('%m月%d日 %H時%M分') %></h2>
       <%= yield %>
   
     </body>
