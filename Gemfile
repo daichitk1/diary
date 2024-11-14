@@ -34,7 +34,7 @@ source 'https://rubygems.org'
 gem 'pry-rails'
 gem 'bcrypt', '~> 3.1.7'
 gem 'simple_calendar', '~> 2.0' 
-
+gem 'kaminari'
 gem 'bootstrap', '~> 5.3'
 gem 'sassc-rails'
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
