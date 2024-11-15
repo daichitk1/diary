@@ -4,8 +4,8 @@ class PostsController < ApplicationController
       today = Date.today
       @every_day_posts = Post.where(important_status: 2).order(created_at: :desc)
       @important_posts = Post.where(important_status: 1).order(created_at: :desc)
-      @unprocessed_posts = Post.where(created_at: today.beginning_of_day..today.end_of_day,status: 0, important_status: 0).order(created_at: :desc).limit(5)
-      @progress_posts = Post.where(created_at: today.beginning_of_day..today.end_of_day,status: 1, important_status: 0).order(created_at: :desc).limit(5)
+      @unprocessed_posts = Post.where(created_at: today.beginning_of_day..today.end_of_day,status: 0, important_status: 0).order(created_at: :desc).limit(15)
+      @progress_posts = Post.where(created_at: today.beginning_of_day..today.end_of_day,status: 1, important_status: 0).order(created_at: :desc).limit(15)
       @posts = Post.where.not(important_status: 2)
       @one_diaries = OneDiary.all
       @memos = Memo.all
@@ -43,7 +43,7 @@ class PostsController < ApplicationController
 
     def all
       today = Date.today
-      @posts = Post.page(params[:page]).per(5)
+      @posts = Post.page(params[:page]).per(15)
     end
 
     def destroy
