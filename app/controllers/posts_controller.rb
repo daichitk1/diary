@@ -2,10 +2,11 @@ class PostsController < ApplicationController
   before_action :logged_in_user
     def index
       today = Date.today
+      @every_day_posts = Post.where(important_status: 2).order(created_at: :desc)
       @important_posts = Post.where(important_status: 1).order(created_at: :desc)
       @unprocessed_posts = Post.where(created_at: today.beginning_of_day..today.end_of_day,status: 0, important_status: 0).order(created_at: :desc).limit(5)
       @progress_posts = Post.where(created_at: today.beginning_of_day..today.end_of_day,status: 1, important_status: 0).order(created_at: :desc).limit(5)
-      @posts = Post.all
+      @posts = Post.where.not(important_status: 2)
       @one_diaries = OneDiary.all
       @memos = Memo.all
     end
@@ -37,7 +38,7 @@ class PostsController < ApplicationController
     end
 
     def show
-      @post=Post.find_by(params[:id])
+      @post=Post.find(params[:id])
     end
 
     def all

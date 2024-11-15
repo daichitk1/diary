@@ -14,9 +14,11 @@ ja:
         important_status:
          normal: 通常
          important: 重要
+         every_day: 毎日
         important_statuses:
          normal: 通常
          important: 重要
+         every_day: 毎日
 
   date:
     abbr_day_names:

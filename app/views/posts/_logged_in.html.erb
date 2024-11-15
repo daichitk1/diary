@@ -19,6 +19,43 @@
   <div class="main-content" style="padding: 10px; margin-bottom: 10px; border: 1px solid #333333; border-radius: 10px;">
     <h1>タスク一覧</h1>
     <%= link_to 'タスク新規作成', new_post_path, class: "btn btn-primary" %>
+
+    <div class="my-5" style="padding: 10px; margin-bottom: 10px; border: 1px solid #333333; border-radius: 10px;">
+    <h3>毎日タスク一覧</h3>
+     <div class="diary my-5">
+      <table class="table">
+        <thead>
+        <tr>
+            <th>日付</th>
+            <th>タイトル</th>
+            <th>中身</th>
+            <th>状態</th>
+            <th>重要度</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% @every_day_posts.each do |post| %>
+            <tr>
+            <td><%= post.created_at.strftime("%Y-%m-%d") %></td> 
+            <td><%= link_to post.title, edit_post_path(post) %></td> 
+            <td><%= post.content %></td>
+            <td><%= I18n.t("activerecord.attributes.post.status.#{post.status}", locale: :ja) %></td>
+            <td><div class="<%= if post.important_status == 'normal' 
+                'badge bg-primary' 
+          elsif post.important_status == 'important' 
+                'badge bg-danger' 
+          else  
+                 'badge bg-success'
+          end %>">
+<%= I18n.t("activerecord.attributes.post.important_status.#{post.important_status}", locale: :ja) %>
+</div></td>
+            </tr>
+        <% end %>
+        </tbody>
+      </table>
+     </div>
+    </div>
+
     <div class="my-5" style="padding: 10px; margin-bottom: 10px; border: 1px solid #333333; border-radius: 10px;">
     <h3>重要タスク一覧</h3>
     <div class="diary my-5">
@@ -39,9 +76,15 @@
               <td><%= link_to post.title, edit_post_path(post) %></td> 
               <td><%= post.content %></td>
               <td><%= I18n.t("activerecord.attributes.post.status.#{post.status}", locale: :ja) %></td>
-              <td><div class="<%= post.important_status == 'normal' ? 'badge bg-primary' : 'badge bg-danger' %>">
-              <%= I18n.t("activerecord.attributes.post.important_status.#{post.important_status}", locale: :ja) %>
-            </div></td>
+              <td><div class="<%= if post.important_status == 'normal' 
+                'badge bg-primary' 
+          elsif post.important_status == 'important' 
+                'badge bg-danger' 
+          else  
+                 'badge bg-success'
+          end %>">
+<%= I18n.t("activerecord.attributes.post.important_status.#{post.important_status}", locale: :ja) %>
+</div></td>
             </tr>
           <% end %>
         </tbody>
@@ -69,9 +112,15 @@
                 <td><%= link_to post.title, edit_post_path(post) %></td> 
                 <td><%= post.content %></td>
                 <td><%= I18n.t("activerecord.attributes.post.status.#{post.status}", locale: :ja) %></td>
-                <td><div class="<%= post.important_status == 'normal' ? 'badge bg-primary' : 'badge bg-danger' %>">
-                <%= I18n.t("activerecord.attributes.post.important_status.#{post.important_status}", locale: :ja) %>
-              </div></td>
+                <td><div class="<%= if post.important_status == 'normal' 
+                    'badge bg-primary' 
+              elsif post.important_status == 'important' 
+                    'badge bg-danger' 
+              else  
+                     'badge bg-success'
+              end %>">
+<%= I18n.t("activerecord.attributes.post.important_status.#{post.important_status}", locale: :ja) %>
+</div></td>
                 </tr>
             <% end %>
             </tbody>
@@ -97,9 +146,16 @@
                     <td><%= link_to post.title, edit_post_path(post.id) %></td> 
                     <td><%= post.content %></td>
                     <td><%= I18n.t("activerecord.attributes.post.status.#{post.status}", locale: :ja) %></td>
-                    <td><div class="<%= post.important_status == 'normal' ? 'badge bg-primary' : 'badge bg-danger' %>">
-                    <%= I18n.t("activerecord.attributes.post.important_status.#{post.important_status}", locale: :ja) %>
-                  </div></td>
+                    <td>
+                    <div class="<%= if post.important_status == 'normal' 
+                        'badge bg-primary' 
+                  elsif post.important_status == 'important' 
+                        'badge bg-danger' 
+                  else  
+                         'badge bg-success'
+                  end %>">
+    <%= I18n.t("activerecord.attributes.post.important_status.#{post.important_status}", locale: :ja) %>
+  </div></td>
                     
                 </tr>
                 </tr>

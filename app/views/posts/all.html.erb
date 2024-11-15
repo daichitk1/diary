@@ -21,7 +21,13 @@
               <td><%= I18n.t("activerecord.attributes.post.status.#{post.status}", locale: :ja) %></td>
               <td>
           
-              <div class="<%= post.important_status == 'normal' ? 'badge bg-primary' : 'badge bg-danger' %>">
+              <div class="<%= if post.important_status == 'normal' 
+                                    'badge bg-primary' 
+                              elsif post.important_status == 'important' 
+                                    'badge bg-danger' 
+                              else  
+                                     'badge bg-success'
+                              end %>">
                 <%= I18n.t("activerecord.attributes.post.important_status.#{post.important_status}", locale: :ja) %>
               </div>
             </tr>
