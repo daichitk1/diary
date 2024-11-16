@@ -4,7 +4,11 @@ class MemosController < ApplicationController
 
   # GET /memos or /memos.json
   def index
-    @memos = Memo.all
+    if params[:query].present?
+      @memos = Memo.where("title LIKE ? OR content LIKE ?", "%#{params[:query]}%", "%#{params[:query]}%")
+    else
+      @memos = Memo.all
+    end
   end
 
   # GET /memos/1 or /memos/1.json
@@ -65,6 +69,6 @@ class MemosController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def memo_params
-      params.require(:memo).permit(:title, :content)
+      params.require(:memo).permit(:title, :content, :query)
     end
 end

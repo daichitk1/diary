@@ -5,6 +5,7 @@ class OneDiariesController < ApplicationController
   # GET /one_diaries or /one_diaries.json
   def index
     @one_diaries = OneDiary.all
+
   end
 
   # GET /one_diaries/1 or /one_diaries/1.json
@@ -18,12 +19,13 @@ class OneDiariesController < ApplicationController
 
   # GET /one_diaries/1/edit
   def edit
+  
   end
 
   # POST /one_diaries or /one_diaries.json
   def create
     @one_diary = OneDiary.new(one_diary_params)
-
+    @one_diary.images.attach(params[:images])
     respond_to do |format|
       if @one_diary.save
         format.html { redirect_to @one_diary, notice: "One diary was successfully created." }
@@ -37,6 +39,7 @@ class OneDiariesController < ApplicationController
 
   # PATCH/PUT /one_diaries/1 or /one_diaries/1.json
   def update
+    @one_diary.images.attach(params[:images])
     respond_to do |format|
       if @one_diary.update(one_diary_params)
         format.html { redirect_to @one_diary, notice: "One diary was successfully updated." }
@@ -66,6 +69,6 @@ class OneDiariesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def one_diary_params
-      params.require(:one_diary).permit(:title, :content, :date)
+      params.require(:one_diary).permit(:title, :content, :date, :query, images: [])
     end
 end

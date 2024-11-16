@@ -6,6 +6,6 @@ Rails.application.routes.draw do
   resources :memos
   resources :posts
   get '/posts_all', to: 'posts#all'
-  root 'posts#index'  # オプション：トップページに投稿一覧を表示
+  root 'posts#index' 
   get 'home/index'
   end
