@@ -5,15 +5,10 @@
   <% @one_diaries.each do |diary| %>
     <div><%= link_to diary.date, one_diary_path(diary.id) %></div>
   <% end %> 
-
     <h4>メモ一覧</h4>
     <% @memos.each do |memo| %>
       <div><%= link_to memo.title, memo_path(memo.id) %></div>
     <% end %> 
-    <h4 class="my-2">アカウント</h4>
-    <p><a href="https://github.com/daichitk1/dairy" target="_blank">Git hub</a></p>
-    <p><a href="https://www.youtube.com" target="_blank">You Tube</a></p>
-    <p><a href="https://chatgpt.com/#" target="_blank">Chat GPT</a></p>
   </div>
 
   <div class="main-content" style="padding: 10px; margin-bottom: 10px; border: 1px solid #333333; border-radius: 10px;">

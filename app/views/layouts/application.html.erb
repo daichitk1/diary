@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+  <script src="https://kit.fontawesome.com/357d3b79de.js" crossorigin="anonymous"></script>
   <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <title><%= content_for(:title) || "Diary" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -9,7 +10,7 @@
     <%= csp_meta_tag %>
     <%= yield :head %>
   
-
+    <link href=”https://use.fontawesome.com/releases/v6.0.0/css/all.css” rel=”stylesheet”>
     <link rel="manifest" href="/manifest.json">
     <link rel="icon" href="/icon.png" type="image/png">
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
@@ -29,10 +30,29 @@
       <%= link_to '新規メモ', new_memo_path, class: "btn btn-success" %>
       <%= button_to 'ログアウト', logout_path, method: :delete, data: { confirm: '本当にログアウトしますか' }, class: "btn btn-danger my-3" %>
     <% end %>
-    <body >
+    <body>
       <h2><%= Time.now.strftime('%m月%d日 %H時%M分') %></h2>
-      <%= yield %>
-  
+      <div style="padding: 10px; margin-bottom: 10px; border: 1px solid #333333; border-radius: 10px;">
+        <div class="m-3 icon" style="padding: 10px; margin-bottom: 10px; border: 1px solid #333333; border-radius: 10px;">
+          <a href="https://www.youtube.com" target="_blank">
+            YouTube
+            <i class="fa-brands fa-youtube">
+            </i>
+          </a>
+          <a href="https://chatgpt.com/#" target="_blank">
+            ChatGPT
+            <i class="fa-brands fa-rocketchat"></i>
+            </i>
+          </a>
+          <a href="https://github.com/daichitk1/dairy" target="_blank">
+            Git hub
+            <i class="fa-brands fa-github"></i>
+          </a>
+ 
+          </a>
+        </div>
+        <%= yield %>
+      </div>
     </body>
     <footer class="bg-secondary h-15">
       
