@@ -22,6 +22,7 @@
         <thead>
         <tr>
             <th>タイトル</th>
+            <th>内容</th>
             <th>状態</th>
             <th>重要度</th>
         </tr>
@@ -30,6 +31,7 @@
         <% @every_day_posts.each do |post| %>
             <tr> 
             <td><%= link_to post.title, edit_post_path(post) %></td> 
+            <td><%= simple_format(post.content) %></td>
             <td><%= I18n.t("activerecord.attributes.post.status.#{post.status}", locale: :ja) %></td>
             <td><div class="<%= if post.important_status == 'normal' 
                 'badge bg-primary' 
