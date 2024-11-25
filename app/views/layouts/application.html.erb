@@ -23,7 +23,6 @@
       <h1>猫と山と人生</h1>
     </header>
     <% if logged_in? %> 
-       <a href="https://cat-and-mountain.com/aaa.html" class="btn btn-success">外部サイト</a>
       <%= link_to 'メインページ', posts_path, class: "btn btn-primary" %>
       <%= link_to 'タスク一覧', posts_all_path, class: "btn btn-secondary" %>
       <%= link_to '日記一覧', one_diaries_path, class: "btn btn-primary" %>
@@ -38,22 +37,37 @@
           ログイン中です。メールアドレス: <%= current_user.email %>
         </div>
       <% end %>
-      <div class="m-3" style="padding: 10px; margin-bottom: 10px; border: 1px solid #333333; border-radius: 10px;">
+      <div class="m-3 d-flex justify-content-start" style="padding: 10px; margin-bottom: 10px; border: 1px solid #333333; border-radius: 10px;">
+        <div class="mx-3">
           <a href="https://www.youtube.com" target="_blank">
-            YouTube
-            <i class="fa-brands fa-youtube">
-            </i>
+              YouTube
+              <i class="fa-brands fa-youtube">
+              </i>
           </a>
+        </div>
+        <div class="mx-3">
           <a href="https://chatgpt.com/#" target="_blank">
             ChatGPT
             <i class="fa-brands fa-rocketchat"></i>
             </i>
           </a>
+        </div>
+        <div class="mx-3">
           <a href="https://github.com/daichitk1/dairy" target="_blank">
             Git hub
             <i class="fa-brands fa-github"></i>
           </a>
         </div>
+        <div class="mx-3">
+          <a href="https://www.udemy.com" target="_blank">
+            Udemy
+            <i class="fa-solid fa-book"></i>
+          </a>
+        </div>
+        <div class="mx-3">
+          <a href="https://cat-and-mountain.com/aaa.html" target="_blank">外部サイト</a>
+        </div>
+      </div>
       <div style="padding: 10px; margin-bottom: 10px; border: 1px solid #333333; border-radius: 10px;">
       
         <%= yield %>
