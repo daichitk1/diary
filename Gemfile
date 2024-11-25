@@ -33,7 +33,7 @@ gem "bootsnap", require: false
 source 'https://rubygems.org'
 gem 'pry-rails'
 gem 'bcrypt', '~> 3.1.7'
-gem 'simple_calendar', '~> 2.0' 
+gem 'simple_calendar', '~> 3.0' 
 gem 'kaminari'
 gem 'bootstrap', '~> 5.3'
 gem 'sassc-rails'
