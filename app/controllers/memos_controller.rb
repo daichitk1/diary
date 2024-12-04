@@ -7,7 +7,7 @@ class MemosController < ApplicationController
     if params[:query].present?
       @memos = Memo.where("title LIKE ? OR content LIKE ?", "%#{params[:query]}%", "%#{params[:query]}%")
     else
-      @memos = Memo.all
+      @memos = Memo.page(params[:page]).per(10)
     end
   end
 
@@ -69,6 +69,6 @@ class MemosController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def memo_params
-      params.require(:memo).permit(:title, :content, :query)
+      params.require(:memo).permit(:title, :content, :query, :page)
     end
 end
