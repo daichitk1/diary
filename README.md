@@ -4,7 +4,7 @@
   実用的なツールの作成を目指す。<br>
 </div>
 <div>
-  <h2>利用する言語</h2><br>
+  <h2>利用する言語</h2>
   現在は、バックエンドはRuby on rails、フロントエンドはHTML/CSSを利用している。<br>
   今後、より作るものの幅を広げるため、JavaScript (Jquery)とReactを学習し機能を拡張する。
 </div>
