@@ -32,7 +32,7 @@ gem "tzinfo-data", platforms: %i[ windows jruby ]
 gem "bootsnap", require: false
 source 'https://rubygems.org'
 gem 'pry-rails'
-gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt', '~> 3.1.20'
 gem 'simple_calendar', '~> 2.0' 
 gem 'kaminari'
 gem 'bootstrap', '~> 5.3'
