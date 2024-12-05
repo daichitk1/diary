@@ -15,6 +15,7 @@
       </div>
     <% end %> 
   </div>
+  
 
   <div class="main-content" style="padding: 10px; margin-bottom: 10px; border: 1px solid #333333; border-radius: 10px;">
     <h1>タスク一覧</h1>
@@ -94,86 +95,87 @@
 
 
     <div style="padding: 10px; margin-bottom: 10px; border: 1px solid #333333; border-radius: 10px;">
-        <h3>未対応直近タスク一覧</h3>
-        <div class="diary my-5">
+      <h3>未対応直近タスク一覧</h3>
+      <div class="diary my-5">
         <table class="table">
-            <thead>
+          <thead>
             <tr>
-                <th>日付</th>
-                <th>タイトル</th>
-                <th>状態</th>
-                <th>重要度</th>
+              <th>日付</th>
+              <th>タイトル</th>
+              <th>状態</th>
+              <th>重要度</th>
             </tr>
-            </thead>
-            <tbody>
+          </thead>
+          <tbody>
             <% @unprocessed_posts.each do |post| %>
-                <tr>
+              <tr>
                 <td><%= post.created_at.strftime("%Y-%m-%d") %></td> 
                 <td><%= link_to post.title, edit_post_path(post) %></td> 
                 <td><%= I18n.t("activerecord.attributes.post.status.#{post.status}", locale: :ja) %></td>
                 <td><div class="<%= if post.important_status == 'normal' 
-                    'badge bg-primary' 
-              elsif post.important_status == 'important' 
-                    'badge bg-danger' 
-              else  
-                     'badge bg-success'
-              end %>">
-              <%= I18n.t("activerecord.attributes.post.important_status.#{post.important_status}", locale: :ja) %>
-            </div></td>
-                </tr>
-            <% end %>
-            </tbody>
-        </table>
-        </div>
-
-
-        <h3>対応中直近タスク一覧</h3>
-        <div class="diary my-5">
-          <table class="table">
-            <thead>
-              <tr>
-                <th>日付</th>
-                <th>タイトル</th>
-                <th>状態</th>
-                <th>重要度</th>
-              </tr>
-            </thead>
-            <tbody>
-              <% @progress_posts.each do |post| %>
-                <tr>
-                  <td><%= post.created_at.strftime("%Y-%m-%d") %></td> 
-                  <td><%= link_to post.title, edit_post_path(post.id) %></td> 
-                  <td><%= I18n.t("activerecord.attributes.post.status.#{post.status}", locale: :ja) %></td>
-                  <td>
-                    <div class="<%= if post.important_status == 'normal' 
-                        'badge bg-primary' 
-                    elsif post.important_status == 'important' 
-                        'badge bg-danger' 
-                    else  
-                         'badge bg-success'
-                    end %>">
-                    <%= I18n.t("activerecord.attributes.post.important_status.#{post.important_status}", locale: :ja) %>
+                                      'badge bg-primary' 
+                                    elsif post.important_status == 'important' 
+                                      'badge bg-danger' 
+                                    else  
+                                      'badge bg-success'
+                                end %>">
+                                <%= I18n.t("activerecord.attributes.post.important_status.#{post.important_status}", locale: :ja) %>
                     </div>
-                  </td>  
-                </tr>
-              <% end %>
-            </tbody>
-          </table>
-        </div>
-  
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
 
-    
-    <h2>カレンダー</h2>
-    <div>
-      <%= month_calendar events: @posts do |date, posts| %>
-        <%= date.day %>
-        <% posts.each do |post| %>
-          <div>
-            <%= link_to post.title, post_path(post.id) %>
-          </div>
+
+      <h3>対応中直近タスク一覧</h3>
+      <div class="diary my-5">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>日付</th>
+              <th>タイトル</th>
+              <th>状態</th>
+              <th>重要度</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @progress_posts.each do |post| %>
+              <tr>
+                <td><%= post.created_at.strftime("%Y-%m-%d") %></td> 
+                <td><%= link_to post.title, edit_post_path(post.id) %></td> 
+                <td><%= I18n.t("activerecord.attributes.post.status.#{post.status}", locale: :ja) %></td>
+                <td>
+                  <div class="<%= if post.important_status == 'normal' 
+                      'badge bg-primary' 
+                  elsif post.important_status == 'important' 
+                      'badge bg-danger' 
+                  else  
+                        'badge bg-success'
+                  end %>">
+                  <%= I18n.t("activerecord.attributes.post.important_status.#{post.important_status}", locale: :ja) %>
+                  </div>
+                </td>  
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+  
+      <div>
+        <h2>カレンダー</h2>
+        <%= month_calendar events: @posts do |date, posts| %>
+          <%= date.day %>
+          <% posts.each do |post| %>
+            <div>
+              <%= link_to post.title, post_path(post.id) %>
+            </div>
+          <% end %>
         <% end %>
-      <% end %>
+      </div>
     </div>
+  </div>
 </div>
 
 
