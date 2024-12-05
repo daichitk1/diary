@@ -11,13 +11,13 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :title, style: "display: block" %>
+  <div class="mx-3">
+    <%= form.label :title, "タイトル", style: "display: block" %>
     <%= form.text_field :title %>
   </div>
 
-  <div>
-    <%= form.label :content, style: "display: block" %>
+  <div class="mx-3">
+    <%= form.label :content, "内容", style: "display: block" %>
     <%= form.text_area :content, class: "form-control text" %>
   </div>
 
