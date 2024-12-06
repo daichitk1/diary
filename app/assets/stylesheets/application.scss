@@ -1,8 +1,5 @@
-@import "setsup.sass";
 @import "bootstrap";
 @import "simple_calendar";
-@import "font-awesome-sass";
-@import '~@fortawesome/fontawesome-free/scss/fontawesome';
 
 .all {
   margin-left: auto;
@@ -46,12 +43,6 @@
 }
 
 .calendar {
-  width: 100px;
-  height: 100px;
-  background-color: #3a1c1c;
-}
-
-.a {
   width: 100px;
   height: 100px;
   background-color: #3a1c1c;
