@@ -1,11 +1,10 @@
+<div class="my-2">
+  <%= link_to "メモ一覧", memos_path, class: "btn btn-outline-primary" %>
+</div>
 <% content_for :title, "新規メモ" %>
 
 <h1>新規メモ作成</h1>
 
 <%= render "form", memo: @memo %>
 
-<br>
 
-<div class="my-2">
-  <%= link_to "メモ一覧", memos_path, class: "btn btn-outline-primary" %>
-</div>

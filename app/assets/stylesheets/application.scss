@@ -7,9 +7,7 @@
   width: 1500px;
   background-color: #ffffff;
 }
-.title {
-  height: 70px; 
-}
+
 .main-content {
   padding: 20px;
   margin-left: auto;
@@ -42,15 +40,18 @@
 .text {
   width: 1200px;
   height: 500px;
+  border-color: black;
 }
 
 .content {
   font-size: 100px;
+  border-color: black;
 }
 
 .next-title {
   color: inherit;
   text-decoration: none;
+  border-color: black;
 }
 
 
@@ -61,4 +62,14 @@
 .next-title:hover {
   color: blue;
   text-decoration: none;
+}
+
+.title {
+  height: 40px;
+  width: 600px;
+  border-color: black;
+}
+
+h1 {
+ margin: 0px;
 }

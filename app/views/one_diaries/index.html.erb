@@ -5,12 +5,25 @@
 <h1>日記一覧</h1>
 
 <div id="one_diaries">
-  <% @one_diaries.each do |one_diary| %>
-    <p>
-    <%= link_to "詳細", one_diary, class: "mx-3 btn btn-outline-primary" %>
-    <strong>タイトル:</strong>
-    <%= one_diary.title %>
-    </p>
-  <% end %>
+  <table class="my-3 table table-hover">
+    <thead>
+      <tr>
+        <th style="width: 200px;">タイトル</th>
+        <th style="width: 300px;">内容</th>
+        <th style="width: 100px;">編集ボタン</th>
+        <th style="width: 100px;">詳細ボタン</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @one_diaries.each do |one_diary| %>
+        <tr>
+          <td><%= one_diary.title %></td> 
+          <td><%= one_diary.content %></td> 
+          <td><%= link_to "編集", edit_one_diary_path(one_diary), class: "mx-3 btn btn-outline-primary" %></td>
+          <td><%= link_to "詳細", one_diary, class: "mx-3 btn btn-outline-primary" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>
 

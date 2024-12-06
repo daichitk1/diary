@@ -1,11 +1,9 @@
+<div>
+  <%= link_to "日記一覧", one_diaries_path, class: "btn btn-outline-primary" %>
+</div>
 <% content_for :title, "New one diary" %>
 
 <h1>日記新規作成</h1>
 
 <%= render "form", one_diary: @one_diary %>
 
-<br>
-
-<div>
-  <%= link_to "日記一覧", one_diaries_path, class: "btn btn-outline-primary" %>
-</div>
