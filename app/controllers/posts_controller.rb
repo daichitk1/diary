@@ -13,6 +13,7 @@ class PostsController < ApplicationController
   
     def new
       @post = Post.new
+      @posts = Post.all
     end
   
     def create
@@ -35,6 +36,7 @@ class PostsController < ApplicationController
 
     def edit
       @post = Post.find(params[:id])
+      @posts = Post.all
     end
 
     def show
