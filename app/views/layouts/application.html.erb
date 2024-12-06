@@ -22,49 +22,49 @@
     <header class="title bg-primary">
       <h1>猫と山と人生</h1>
     </header>
+    <% if logged_in? %>
+      <div class="login-status" style="padding: 10px;  border: 1px solid #333333; border-radius: 10px;">
+        ログイン中です。メールアドレス: <%= current_user.email %>
+        <%= button_to 'ログアウト', logout_path, method: :delete, data: { confirm: '本当にログアウトしますか' }, class: "btn btn-outline-danger" %>
+      </div>
+    <% end %>
     <% if logged_in? %> 
       <%= link_to 'メインページ', posts_path, class: "btn btn-primary" %>
       <%= link_to 'タスク一覧', posts_all_path, class: "btn btn-secondary" %>
       <%= link_to '日記一覧', one_diaries_path, class: "btn btn-primary" %>
       <%= link_to 'メモ一覧', memos_path, class: "btn btn-success" %>
       <%= link_to '新規メモ', new_memo_path, class: "btn btn-success" %>
-      <%= button_to 'ログアウト', logout_path, method: :delete, data: { confirm: '本当にログアウトしますか' }, class: "btn btn-danger my-3" %>
+      <div class="m-3 d-flex justify-content-start" style="padding: 10px; margin-bottom: 10px; border: 1px solid #333333; border-radius: 10px;">
+        <div class="mx-3">
+          <a href="https://www.youtube.com" target="_blank">
+              YouTube
+              <i class="fa-brands fa-youtube">
+              </i>
+          </a>
+        </div>
+        <div class="mx-3">
+          <a href="https://chatgpt.com/#" target="_blank">
+            ChatGPT
+            <i class="fa-brands fa-rocketchat"></i>
+            </i>
+          </a>
+        </div>
+        <div class="mx-3">
+          <a href="https://github.com/daichitk1/diary" target="_blank">
+            Git hub
+            <i class="fa-brands fa-github"></i>
+          </a>
+        </div>
+        <div class="mx-3">
+          <a href="https://www.udemy.com" target="_blank">
+            Udemy
+            <i class="fa-solid fa-book"></i>
+          </a>
+        </div>
+      </div>
     <% end %>
     <body>
       <h2><%= Time.now.strftime('%m月%d日 %H時%M分') %></h2>
-      <% if logged_in? %>
-          <div class="m-3" style="padding: 10px; margin-bottom: 10px; border: 1px solid #333333; border-radius: 10px;">
-            ログイン中です。メールアドレス: <%= current_user.email %>
-          </div>
-          <div class="m-3 d-flex justify-content-start" style="padding: 10px; margin-bottom: 10px; border: 1px solid #333333; border-radius: 10px;">
-            <div class="mx-3">
-              <a href="https://www.youtube.com" target="_blank">
-                  YouTube
-                  <i class="fa-brands fa-youtube">
-                  </i>
-              </a>
-            </div>
-            <div class="mx-3">
-              <a href="https://chatgpt.com/#" target="_blank">
-                ChatGPT
-                <i class="fa-brands fa-rocketchat"></i>
-                </i>
-              </a>
-            </div>
-            <div class="mx-3">
-              <a href="https://github.com/daichitk1/diary" target="_blank">
-                Git hub
-                <i class="fa-brands fa-github"></i>
-              </a>
-            </div>
-            <div class="mx-3">
-              <a href="https://www.udemy.com" target="_blank">
-                Udemy
-                <i class="fa-solid fa-book"></i>
-              </a>
-            </div>
-          </div>
-      <% end %>
       <div style="padding: 10px; margin-bottom: 10px; border: 1px solid #333333; border-radius: 10px;">
         <%= yield %>
       </div>
