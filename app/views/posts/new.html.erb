@@ -1,6 +1,6 @@
 <%= link_to 'メインページ', posts_path, class: "btn btn-primary" %>
 <h1>新規作成</h1>
-<div>
+<div class="calendar">
   <h2>カレンダー</h2>
   <%= month_calendar events: @posts do |date, posts| %>
     <%= date.day %>

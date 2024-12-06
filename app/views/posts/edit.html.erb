@@ -3,7 +3,17 @@
 </div>
 <div class="my-3" style="padding: 10px; margin-bottom: 10px; border: 1px solid #333333; border-radius: 10px;">
 <h1>新規作成</h1>
-
+<div class="calendar">
+  <h2>カレンダー</h2>
+  <%= month_calendar events: @posts do |date, posts| %>
+    <%= date.day %>
+    <% posts.each do |post| %>
+      <div>
+        <%= link_to post.title, post_path(post.id) %>
+      </div>
+    <% end %>
+  <% end %>
+</div>
 <%= form_with(model: @post, local: true) do |form| %>
 
   <h3>今日の日時</h3>
@@ -36,5 +46,6 @@
 
 <%= link_to 'ユーザー一覧', posts_path, class: "btn btn-primary" %>
 
-</div>
 
+
+</div>
