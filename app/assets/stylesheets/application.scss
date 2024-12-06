@@ -4,6 +4,7 @@
 .all {
   margin-left: auto;
   margin-right: auto;
+  width: 1500px;
   background-color: #ffffff;
 }
 .title {
@@ -39,11 +40,10 @@
   right: 0; 
 }
 .text {
-  width: 1500px;
+  width: 1200px;
+  height: 500px;
 }
 
-.calendar {
-  width: 100px;
-  height: 100px;
-  background-color: #3a1c1c;
+.content {
+  font-size: 100px;
 }
