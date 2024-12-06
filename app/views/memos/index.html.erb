@@ -5,8 +5,8 @@
 
 <h1>メモ一覧</h1>
 <%= form_with url: memos_path, method: :get, local: true do %>
-  <div class="my-3" style="padding: 10px; margin-bottom: 10px; border: 1px solid #333333; border-radius: 10px;">
-    <%= text_field_tag :query, params[:query], placeholder: "キーワードを入力",  class: 'form-control w-25 my-1' %>
+  <div class="my-3 d-flex align-items-center">
+    <%= text_field_tag :query, params[:query], placeholder: "キーワードを入力",  class: 'form-control w-25 m-1 title' %>
     <%= submit_tag "検索", class: "btn btn-outline-primary" %>
   </div>
 <% end %>
