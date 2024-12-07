@@ -85,3 +85,16 @@ h1 {
   background-color: rgb(211, 251, 228);
   text-decoration: none;
 }
+
+
+.every-task:hover {
+  background-color: rgb(211, 251, 228);
+}
+
+.important-task:hover {
+  background-color: rgb(251, 211, 211);
+}
+
+.normal-task:hover {
+  background-color: rgb(211, 232, 251);
+}
