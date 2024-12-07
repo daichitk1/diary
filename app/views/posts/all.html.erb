@@ -1,6 +1,21 @@
 <div class="main-content">
   <%= link_to 'タスク新規作成', new_post_path, class: "btn btn-outline-primary my-2" %>
   <h2>直近タスク一覧</h2>
+  <%= form_with url: posts_all_path, method: :get, local: true do |form| %>
+    <div style="padding: 10px; margin-bottom: 10px; border: 1px solid #333333; border-radius: 10px;">
+      <div class="m-3">
+        <%= form.label :input_status, "状態" %>
+        <%= form.select :input_status, options_for_select([["未処理", 0], ["対応中", 1], ["完了", 2]]), { include_blank: "選択してください" }, class: "input_select form-control w-25" %>
+      </div>
+      <div class="m-3">
+        <%= form.label :input_important, "重要度" %>
+        <%= form.select :input_important, options_for_select([["通常", 0], ["重要", 1], ["毎日", 2]]), { include_blank: "選択してください" }, class: "input_select form-control w-25" %>
+      </div>
+      <div>
+        <%= submit_tag "決定", class: "btn btn-outline-primary" %>
+      </div>
+    </div>
+  <% end %>
   <div class="diary m-5">
     <table class="table table-hover">
       <thead>

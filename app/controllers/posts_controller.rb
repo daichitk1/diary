@@ -45,7 +45,14 @@ class PostsController < ApplicationController
 
     def all
       today = Date.today
-      @posts = Post.page(params[:page]).per(15)
+      @posts = Post.all
+      if params[:input_important] != ""
+        @posts = @posts.where(important_status: params[:input_important])
+      end
+      if params[:input_status] != ""
+        @posts = @posts.where(status: params[:input_status])
+      end  
+      @posts = @posts.page(params[:page]).per(15)
     end
 
     def destroy
@@ -61,7 +68,7 @@ class PostsController < ApplicationController
     private
   
     def post_params
-      params.require(:post).permit(:title, :content, :status, :start_time, :important_status)
+      params.require(:post).permit(:title, :content, :status, :start_time, :important_status, :input_status, :input_important)
     end
 
     def memo_params
