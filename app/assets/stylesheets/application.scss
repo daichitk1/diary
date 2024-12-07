@@ -44,8 +44,9 @@
 }
 
 .content {
-  font-size: 100px;
+  font-size: 20px;
   border-color: black;
+  height: 300px;
 }
 
 .next-title {
@@ -65,6 +66,7 @@
 }
 
 .title {
+  font-size: 20px;
   height: 40px;
   width: 600px;
   border-color: black;
@@ -88,17 +90,22 @@ h1 {
 
 
 .every-task:hover {
-  background-color: rgb(211, 251, 228);
+  background-color: rgb(230, 249, 239);
 }
 
 .important-task:hover {
-  background-color: rgb(251, 211, 211);
+  background-color: rgb(252, 237, 237);
 }
 
 .normal-task:hover {
-  background-color: rgb(211, 232, 251);
+  background-color: rgb(236, 245, 252);
 }
 
 .input_select {
   border-color: black;
 }
+
+.side-bar:hover {
+  background-color: rgb(243, 241, 241);
+}
+

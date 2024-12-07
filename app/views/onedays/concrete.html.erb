@@ -1,0 +1,72 @@
+<h1><%= params[:date] %>の記録</h1>
+
+<h3>日記一覧</h3>
+<div id="one_diaries">
+  <table class="my-3 table table-hover">
+    <thead>
+      <tr>
+        <th style="width: 200px;">タイトル</th>
+        <th style="width: 300px;">内容</th>
+        <th style="width: 100px;">編集ボタン</th>
+        <th style="width: 100px;">詳細ボタン</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @one_diaries.each do |one_diary| %>
+        <tr>
+          <td><%= one_diary.title %></td> 
+          <td><%= one_diary.content %></td> 
+          <td><%= link_to "編集", edit_one_diary_path(one_diary), class: "mx-3 btn btn-outline-primary" %></td>
+          <td><%= link_to "詳細", one_diary, class: "mx-3 btn btn-outline-primary" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<h3>メモ一覧</h3>
+<div id="memos">
+  <% @memos.each do |memo| %>
+    <div>
+      <%= link_to memo.title, memo %>
+    
+    </div>
+  <% end %>
+</div>
+
+<h3>タスク一覧</h3>
+<div class="diary m-5">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th style="width:150px;">日付</th>
+          <th style="width:200px;">タイトル</th>
+          <th style="width:500px;">内容</th>
+          <th style="width:150px;">状態</th>
+          <th style="width:150px;">重要度</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @posts.each do |post| %>
+          <tr>
+            <td><%= post.created_at.strftime("%Y-%m-%d") %></td> 
+            <td><%= link_to post.title, edit_post_path(post.id) %></td> 
+            <td><%= post.content %></td>
+            <td><%= I18n.t("activerecord.attributes.post.status.#{post.status}", locale: :ja) %></td>
+            <td>
+        
+            <div class="<%= if post.important_status == 'normal' 
+                                  'badge bg-primary' 
+                            elsif post.important_status == 'important' 
+                                  'badge bg-danger' 
+                            else  
+                                    'badge bg-success'
+                            end %>">
+              <%= I18n.t("activerecord.attributes.post.important_status.#{post.important_status}", locale: :ja) %>
+            </div>
+          </tr>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>

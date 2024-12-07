@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :onedays
   resources :one_diaries
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
@@ -8,4 +9,5 @@ Rails.application.routes.draw do
   get '/posts_all', to: 'posts#all'
   root 'posts#index' 
   get 'home/index'
+  get '/one_days_concrete', to: 'onedays#concrete'
   end
