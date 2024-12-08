@@ -1,10 +1,10 @@
 <div class="main-content">
   <%= link_to 'タスク新規作成', new_post_path, class: "btn btn-outline-primary my-2" %>
   <div class="my-3">
-    <h2>タスク一覧</h2>
+  <h2>タスク一覧</h2>
   </div>
   <%= form_with url: posts_all_path, method: :get, local: true do |form| %>
-    <div style="padding: 1px; margin-bottom: 10px; border: 1px solid #333333; border-radius: 10px; width: 1000px;">
+    <div class="search" style="padding: 1px; margin-bottom: 10px; border: 1px solid #333333; border-radius: 10px; width: 1000px;">
       <div class="d-flex justify-content-start" style="width: 1000px;">
         <div class="m-3">
           <%= form.label :input_status, "状態" %>

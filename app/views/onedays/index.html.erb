@@ -1,6 +1,6 @@
 <h1>日にちごとの記録ページ</h1>
 
-<div>カレンダーから見たい１日を選択してください。</div>
+<div class="my-3">カレンダーから見たい１日を選択してください。</div>
 
 <%= month_calendar do |date| %>
   <%= link_to date.day, one_days_concrete_path(date: date) %>
