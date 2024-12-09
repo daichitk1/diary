@@ -1,10 +1,10 @@
 <p style="color: green"><%= notice %></p>
-
-<%= render @development %>
-
+<div class="my-3">
+  タイトル: <%= @development.title %>
+  内容: <%= @development.content %>
+</div>
 <div>
-  <%= link_to "Edit this development", edit_development_path(@development) %> |
-  <%= link_to "Back to developments", developments_path %>
-
-  <%= button_to "Destroy this development", @development, method: :delete %>
+  <%= link_to "編集", edit_development_path(@development), class: "btn btn-primary" %> 
+  <%= link_to "開発一覧", developments_path, class: "btn btn-primary" %>
+  <%= button_to "削除", @development, method: :delete, class: "btn btn-danger my-3" %>
 </div>

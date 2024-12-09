@@ -46,6 +46,10 @@
   
   <% if @posts.count > 0 %>
     <h3>この日締め切りのタスク一覧</h3>
+    <div class="task-per mx-2" style="border-style: solid; width: 150px;">
+      <h4>タスク達成率</h4>
+      <h5 class="mx-4"><%=@posts.where(status: "2").count*100 / @posts.count %>%</h5>
+    </div>
     <div class="diary mb-5">
       <table class="table table-hover">
         <thead>

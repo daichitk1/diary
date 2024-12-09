@@ -4,10 +4,12 @@
 
 <div id="developments">
   <% @developments.each do |development| %>
-    <%= render development %>
-    <p>
-      <%= link_to "Show this development", development %>
-    </p>
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr);">
+      <div style="padding: 10px; margin-bottom: 10px; border: 1px solid #333333; border-radius: 10px;">
+        <h3><%= development.title %></h3><br>
+        <%= link_to "詳細を見る", development, class: "btn btn-outline-primary" %>
+      </div>
+    </div>
   <% end %>
 </div>
 
