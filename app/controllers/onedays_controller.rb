@@ -1,4 +1,5 @@
 class OnedaysController < ApplicationController
+  before_action :logged_in_user
   def index
     @onedays = Oneday.all
   end

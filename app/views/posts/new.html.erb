@@ -1,6 +1,37 @@
 <%= link_to 'メインページ', posts_path, class: "btn btn-primary" %>
-<h1>新規作成</h1>
-<div class="calendar">
+<h1>タスク新規作成</h1>
+
+<%= form_with(model: @post, local: true) do |form| %>
+  <div class="my-3" style="padding: 10px; margin-bottom: 10px; border: 1px solid #333333; border-radius: 10px;">
+    <h3>今日の日時</h3>
+    <%= Time.now %>
+    <div class="field my-3">
+      <%= form.label :title, "タイトル" %>
+      <%= form.text_field :title, class: 'title form-control' %>
+    </div>
+    <div class="field my-3">
+      <%= form.label :content, "内容" %>
+      <%= form.text_area :content, class: 'content form-control' %>
+    </div>
+    <div class="time my-3">
+      <%= form.label :start_time, "締め切り" %>
+      <%= form.datetime_select :start_time, class: 'form-control' %>
+    </div>
+    <div class="form-group my-3">
+      <%= form.label :status, '状態' %>
+      <%= form.select :status, Post.statuses.keys.map { |status| [I18n.t("activerecord.attributes.post.statuses.#{status}",locale: :ja), status] }, {}, class: 'form-control w-25' %>
+    </div>
+
+    <div class="form-group my-3">
+      <%= form.label :important_status, '重要度' %>
+      <%= form.select :important_status, Post.important_statuses.keys.map { |important_status| [I18n.t("activerecord.attributes.post.important_statuses.#{important_status}",locale: :ja), important_status] }, {}, class: 'form-control w-25' %>
+
+    </div>
+
+    <%= form.submit '決定', class: "btn btn-outline-primary" %>
+  </div>
+<% end %>
+<div class="calendar my-3" style="padding: 10px; margin-bottom: 10px; border: 1px solid #333333; border-radius: 10px;">
   <h2>カレンダー</h2>
   <%= month_calendar events: @posts do |date, posts| %>
     <%= date.day %>
@@ -11,33 +42,5 @@
     <% end %>
   <% end %>
 </div>
-<%= form_with(model: @post, local: true) do |form| %>
-<div class="my-3" style="padding: 10px; margin-bottom: 10px; border: 1px solid #333333; border-radius: 10px;">
-  <h3>今日の日時</h3>
-  <%= Time.now %>
-  <div class="field my-3">
-    <%= form.label :title, "タイトル" %>
-    <%= form.text_field :title, class: 'title form-control' %>
-  </div>
-  <div class="field my-3">
-    <%= form.label :content, "内容" %>
-    <%= form.text_area :content, class: 'content form-control' %>
-  </div>
-  <div class="time my-3">
-    <%= form.label :start_time, "締め切り" %>
-    <%= form.datetime_select :start_time, class: 'form-control' %>
-  </div>
-  <div class="form-group my-3">
-    <%= form.label :status, '状態' %>
-    <%= form.select :status, Post.statuses.keys.map { |status| [I18n.t("activerecord.attributes.post.statuses.#{status}",locale: :ja), status] }, {}, class: 'form-control w-25' %>
-  </div>
 
-  <div class="form-group my-3">
-    <%= form.label :important_status, '重要度' %>
-    <%= form.select :important_status, Post.important_statuses.keys.map { |important_status| [I18n.t("activerecord.attributes.post.important_statuses.#{important_status}",locale: :ja), important_status] }, {}, class: 'form-control w-25' %>
-
-  </div>
-
-  <%= form.submit '決定', class: "btn btn-outline-primary" %>
-<% end %>
 

@@ -1,0 +1,14 @@
+<% content_for :title, "Developments" %>
+
+<h1>開発一覧</h1>
+
+<div id="developments">
+  <% @developments.each do |development| %>
+    <%= render development %>
+    <p>
+      <%= link_to "Show this development", development %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "新規開発メモ", new_development_path, class: "btn btn-primary my-2" %>

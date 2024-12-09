@@ -19,8 +19,8 @@
   </head>
 
   <div class="all">
-    <header class="bg-primary">
-      <h1>猫と山と人生</h1>
+    <header>
+      <h1 class="py-1 px-3 main-title">猫と山と人生⛰️</h1>
     </header>
     <% if logged_in? %>
       <div class="login-status d-flex align-items-center" style="padding: 10px;  border: 1px solid #333333; border-radius: 10px;">
@@ -35,45 +35,62 @@
         <%= link_to '日記一覧', one_diaries_path, class: "btn btn-primary" %>
         <%= link_to 'メモ一覧', memos_path, class: "btn btn-success" %>
         <%= link_to '新規メモ', new_memo_path, class: "btn btn-success" %>
-        <%= link_to '日にちごとの記録', onedays_path, class: "btn btn-info mx-5" %>
+        <%= link_to '開発一覧', developments_path, class: "btn btn-warning" %>
+        <%= link_to '記録一覧', onedays_path, class: "btn btn-info mx-5" %>
       </div>
-      <div class="m-3 d-flex justify-content-start" style="padding: 10px; margin-bottom: 10px; border: 1px solid #333333; border-radius: 10px;">
+      <div class="mx-3 my-4 d-flex justify-content-start sns-list" style="padding: 10px; margin-bottom: 10px; border: 1px solid #333333; border-radius: 10px;">
         <div class="sns mx-3" style="padding: 10px; border: 1px solid #333333; border-radius: 10px;">
-          <a class="sns" href="https://www.youtube.com" target="_blank">
+          <a class="sns-only" href="https://www.youtube.com" target="_blank">
               YouTube
-              <i class="fa-brands fa-youtube">
-              </i>
+              <i class="fa-brands fa-youtube"></i>
           </a>
         </div>
         <div class="sns mx-3" style="padding: 10px; border: 1px solid #333333; border-radius: 10px;">
-          <a class="sns" href="https://chatgpt.com/#" target="_blank">
+          <a class="sns-only" href="https://chatgpt.com/#" target="_blank">
             ChatGPT
             <i class="fa-brands fa-rocketchat"></i>
-            </i>
           </a>
         </div>
         <div class="sns mx-3" style="padding: 10px; border: 1px solid #333333; border-radius: 10px;">
-          <a class="sns" href="https://github.com/daichitk1/diary" target="_blank">
+          <a class="sns-only" href="https://github.com/daichitk1/diary" target="_blank">
             Git hub
             <i class="fa-brands fa-github"></i>
           </a>
         </div>
         <div class="sns mx-3" style="padding: 10px; border: 1px solid #333333; border-radius: 10px;">
-          <a class="sns" href="https://www.udemy.com" target="_blank">
+          <a class="sns-only" href="https://www.udemy.com" target="_blank">
             Udemy
             <i class="fa-solid fa-book"></i>
           </a>
         </div>
         <div class="sns mx-3" style="padding: 10px; border: 1px solid #333333; border-radius: 10px;">
-          <a class="sns" href="https://catandmountain.wordpress.com/wp-admin/" target="_blank">
+          <a class="sns-only" href="https://catandmountain.wordpress.com/wp-admin/" target="_blank">
             個人ブログ
             <i class="fa-solid fa-blog"></i>
           </a>
         </div>
         <div class="sns mx-3" style="padding: 10px; border: 1px solid #333333; border-radius: 10px;">
-          <a class="sns" href="https://yamap.com" target="_blank">
+          <a class="sns-only" href="https://yamap.com" target="_blank">
             YAMAP
             <i class="fa-regular fa-mountain"></i>
+          </a>
+        </div>
+        <div class="sns mx-3" style="padding: 10px; border: 1px solid #333333; border-radius: 10px;">
+          <a class="sns-only" href="https://www.instagram.com" target="_blank">
+            Instagram
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+        </div>
+        <div class="sns mx-3" style="padding: 10px; border: 1px solid #333333; border-radius: 10px;">
+          <a class="sns-only" href="https://www.tiktok.com/foryou?lang=ja-JP" target="_blank">
+            Tik Tok
+            <i class="fa-brands fa-tiktok"></i>
+          </a>
+        </div>
+        <div class="sns mx-3" style="padding: 10px; border: 1px solid #333333; border-radius: 10px;">
+          <a class="sns-only" href="https://www.strava.com/dashboard" target="_blank">
+            STRAVA
+            <i class="fa-solid fa-bicycle"></i>
           </a>
         </div>
       </div>
@@ -84,7 +101,7 @@
         <%= yield %>
       </div>
     </body>
-    <footer class="bg-secondary h-15">
+    <footer class="bg-primary">
     </footer>
   </div>
 </html>

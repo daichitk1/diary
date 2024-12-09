@@ -57,7 +57,7 @@
 
 
 .login-status {
-  background-color: #b1d7fd;
+  background-color: #c7e2fd;
 }
 
 .next-title:hover {
@@ -77,13 +77,26 @@ h1 {
 }
 
 .sns {
-  color: inherit;
+  color: rgb(222, 252, 235);
+  
+  background-color: rgb(2, 154, 68);
   text-decoration: none;
   border-color: black;
 }
 
+.sns-only {
+  text-decoration: none;
+  color: rgb(186, 246, 212);
+}
+
+.sns-only:hover {
+  text-decoration: none;
+  color: rgb(27, 103, 60);
+}
+
+
 .sns:hover {
-  color: rgb(6, 117, 52);
+  color: rgb(27, 103, 60);
   background-color: rgb(211, 251, 228);
   text-decoration: none;
 }
@@ -115,4 +128,13 @@ h1 {
 
 .day_calendar:hover {
   background-color: rgb(187, 251, 235);
+}
+
+.sns-list {
+  background-color: rgb(219, 251, 253);
+}
+
+.main-title {
+  color: rgb(19, 83, 203);
+  background-color: rgb(110, 239, 248);
 }

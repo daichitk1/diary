@@ -1,5 +1,9 @@
-<h1><%= params[:date] %>の記録</h1>
-<%= link_to "日にちごとの記録ページ", onedays_path, class: "my-3 btn btn-outline-primary" %>
+<%= link_to "記録一覧ページ", onedays_path, class: "mb-2 btn btn-outline-primary" %>
+<h1 class="mt-3">
+  <%= link_to "◀︎", one_days_concrete_path(date: Date.parse(params[:date])-1) %>
+  <%= params[:date] %>の記録
+  <%= link_to "▶", one_days_concrete_path(date: Date.parse(params[:date])+1) %>
+</h1>
 
 <div>
   <% if @one_diaries.count > 0 %>
@@ -41,7 +45,7 @@
   <% end %>
   
   <% if @posts.count > 0 %>
-    <h3>タスク一覧</h3>
+    <h3>この日締め切りのタスク一覧</h3>
     <div class="diary mb-5">
       <table class="table table-hover">
         <thead>

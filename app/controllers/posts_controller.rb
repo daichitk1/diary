@@ -44,15 +44,13 @@ class PostsController < ApplicationController
   end
 
   def all
-    today = Date.today
     @posts = Post.all
-    if params[:input_important] != ""
+    if params[:input_important] != "" && params[:input_important].present?
       @posts = @posts.where(important_status: params[:input_important])
     end
-    if params[:input_status] != ""
+    if params[:input_status] != "" && params[:input_status].present?
       @posts = @posts.where(status: params[:input_status])
     end  
-    @posts = @posts.page(params[:page]).per(15)
   end
 
   def destroy

@@ -1,12 +1,13 @@
-<%= button_to "このタスクを削除する", @post, method: :delete %>
-<h1>一覧</h1>
-<div>   
+<%= button_to "削除", @post, method: :delete, class: "btn btn-danger mb-3" %>
+<%= link_to 'タスク一覧', posts_path, class: "btn btn-outline-primary mb-2" %>
+<h1>タスク詳細</h1>
+<div class="my-3">   
   タイトル <%= @post.title %>
 </div>
-<div>
+<div class="my-3">
+  内容
   <%= @post.content %>
 </div>
 <div>
 </div>
-<%= link_to 'タスク編集', edit_post_path(@post), class: "btn btn-outline-primary" %>
-<%= link_to 'タスク一覧', posts_path, class: "btn btn-primary" %>
+<%= link_to 'タスク編集', edit_post_path(@post), class: "btn btn-outline-primary my-3" %>

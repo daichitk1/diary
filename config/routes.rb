@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :developments
   resources :onedays
   resources :one_diaries
   get    '/login',   to: 'sessions#new'
