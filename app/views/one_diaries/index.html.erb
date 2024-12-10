@@ -18,7 +18,7 @@
       <% @one_diaries.each do |one_diary| %>
         <tr>
           <td><%= one_diary.title %></td> 
-          <td><%= one_diary.content %></td> 
+          <td><%= one_diary.content.truncate(40) %></td> 
           <td><%= link_to "編集", edit_one_diary_path(one_diary), class: "mx-3 btn btn-outline-primary" %></td>
           <td><%= link_to "詳細", one_diary, class: "mx-3 btn btn-outline-primary" %></td>
         </tr>

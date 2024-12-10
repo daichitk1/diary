@@ -1,10 +1,9 @@
-<p style="color: green"><%= notice %></p>
+<%= link_to "日記一覧", one_diaries_path, class: "btn btn-outline-primary mb-2" %>
 
 <%= render @one_diary %>
 
-<div>
-  <%= link_to "編集", edit_one_diary_path(@one_diary), class: "btn btn-outline-primary" %> |
-  <%= link_to "日記一覧", one_diaries_path, class: "btn btn-outline-primary" %>
-
-  <%= button_to "削除", @one_diary, method: :delete, class: "btn btn-outline-danger" %>
+<div class="my-3">
+  <%= link_to "編集", edit_one_diary_path(@one_diary), class: "btn btn-outline-primary" %> 
 </div>
+
+<%= button_to "削除", @one_diary, method: :delete, class: "btn btn-outline-danger mb-4" %>
