@@ -1,17 +1,17 @@
-<div id="<%= dom_id one_diary %>">
-  <p>
-    <strong>タイトル:</strong>
+<div style="padding: 1px; margin-bottom: 10px; border: 1px solid #333333; border-radius: 10px; width: 1000px;" id="<%= dom_id one_diary %>">
+  <div class="m-3">
+    <h4>タイトル:</h4>
     <%= one_diary.title %>
-  </p>
+  </div>
 
-  <p>
-    <strong>内容:</strong>
+  <div class="m-3">
+    <h4>内容:</h4>
     <%= simple_format(one_diary.content) %>
-  </p>
+  </div>
 
-  <p>
-    <strong>日付:</strong>
+  <div class="m-3">
+    <h4>日付:</h4>
     <%= one_diary.date %>
-  </p>
+  </div>
 
 </div>
