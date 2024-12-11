@@ -7,7 +7,7 @@
     <%= Time.now %>
     <div class="field my-3">
       <%= form.label :title, "タイトル" %>
-      <%= form.text_field :title, class: 'title form-control' %>
+      <%= form.text_field :title, {required: true, class: 'title form-control'} %>
     </div>
     <div class="field my-3">
       <%= form.label :content, "内容" %>

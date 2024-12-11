@@ -15,11 +15,16 @@ class OneDiariesController < ApplicationController
   # GET /one_diaries/new
   def new
     @one_diary = OneDiary.new
+    @today_posts = Post.where('start_time LIKE ?', "#{Time.now.strftime( "%Y-%m-%d")}%")
+    @today_memos = Memo.where('created_at LIKE ?', "#{Time.now.strftime( "%Y-%m-%d")}%")
+
   end
 
   # GET /one_diaries/1/edit
   def edit
-  
+    @today_posts = Post.where('start_time LIKE ?', "#{Time.now.strftime( "%Y-%m-%d")}%")
+    @today_memos = Memo.where('created_at LIKE ?', "#{Time.now.strftime( "%Y-%m-%d")}%")
+
   end
 
   # POST /one_diaries or /one_diaries.json

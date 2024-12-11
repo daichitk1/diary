@@ -48,4 +48,42 @@
   <div>
    <%= form.submit '決定', class: "btn btn-outline-primary" %>
   </div>
+  <% if @today_memos.count > 0 || @today_posts.count > 0 %>
+    <div class="my-3" style="padding: 10px;  border: 1px solid #333333; border-radius: 10px;">
+      <% if @today_memos.count > 0 %>
+        <h3>メモ一覧</h3>
+        <div class="mb-5" id="memos">
+          <% @today_memos.each do |memo| %>
+          <div>
+            <%= link_to memo.title, memo %>
+          </div>
+          <% end %>
+        </div>
+      <% end %>
+
+      <% if @today_posts.count > 0 %>
+        <h3>今日のタスク一覧</h3>
+        <div class="diary">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th style="width:200px;">タイトル</th>
+                <th style="width:500px;">内容</th>
+                <th style="width:150px;">状態</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @today_posts.each do |post| %>
+                <tr>
+                  <td><%= link_to post.title, edit_post_path(post.id) %></td> 
+                  <td><%= post.content %></td>
+                  <td><%= I18n.t("activerecord.attributes.post.status.#{post.status}", locale: :ja) %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
 <% end %>
