@@ -7,7 +7,7 @@ class MemosController < ApplicationController
     if params[:query].present?
       @memos = Memo.where("title LIKE ? OR content LIKE ?", "%#{params[:query]}%", "%#{params[:query]}%")
     else
-      @memos = Memo.page(params[:page]).per(10)
+      @memos = Memo.all
     end
   end
 
