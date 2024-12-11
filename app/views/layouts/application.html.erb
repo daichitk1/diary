@@ -96,7 +96,12 @@
       </div>
     <% end %>
     <body>
-      <h2><%= Time.now.strftime('%m月%d日 %H時%M分') %></h2>
+      <div class="d-flex justify-content-between">
+        <h2><%= Time.now.strftime('%m月%d日 %H時%M分') %></h2>
+        <% if OneDiary.where('created_at LIKE ?', "#{Time.now.strftime( "%Y-%H-%M")}%").count == 0 %>
+          <h2><%= link_to "まだ本日の日記が作成されておりません", new_one_diary_path, class: "diary-color" %></h2>
+        <% end %>
+      </div>
       <div style="padding: 10px; margin-bottom: 10px; border: 1px solid #333333; border-radius: 10px;">
         <%= yield %>
       </div>
