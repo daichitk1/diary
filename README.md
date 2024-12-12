@@ -18,27 +18,27 @@
   <h2>利用方法</h2>
   <h3>1. git cloneを行い、ローカルの環境にコードを持ってくる</h3>
   <h3>2.rubyの環境構築を行なう</h3>
-  以下の三つをコマンドで実行することで環境構築が可能です。
-  rbenv install 3.3.5
-  gem install bundler
-  bundle install -gemfile "gemfileのパス"
+  以下の三つをコマンドで実行することで環境構築が可能です。<br>
+  rbenv install 3.3.5<br>
+  gem install bundler<br>
+  bundle install -gemfile "gemfileのパス"<br><br>
 
-  以上で環境構築は終わりです。
+  以上で環境構築は終わりです。<br><br>
   
   <h4>3. railsコンソールでユーザーを作成する</h4>
-  以下のサイトを参考にパスワードの実装をしました。
-  https://qiita.com/ryosuketter/items/805452b7e6bf9637cb57
+  以下のサイトを参考にパスワードの実装をしました。<br>
+  https://qiita.com/ryosuketter/items/805452b7e6bf9637cb57<br><br>
 　
-  そのため、railsコンソールをrails consoleで開いた後、以下のコマンドを入力し実行してください。
-　user = User.new(email: メールアドレス, password: 任意のパスワード)
-　user.save
+  そのため、railsコンソールをrails consoleで開いた後、以下のコマンドを入力し実行してください。<br>
+　user = User.new(email: メールアドレス, password: 任意のパスワード)<br>
+　user.save<br><br>
 
   <h5>5. rails sで起動する。</h5>
-　ターミナルにアクセスすべきURLが出るのでこのURLを入力してください。
-　おそらく、http://127.0.0:3000
+　ターミナルにアクセスすべきURLが出るのでこのURLを入力してください。<br>
+　おそらく、http://127.0.0:3000<br><br>
 
   <h6>6. ログイン画面でメールアドレスとパスワードを入力</h6>
-  rails sでruby on railsを起動すると、ログイン画面に遷移できるので先ほど登録したメールアドレスとパスワードを入力してください。
+  rails sでruby on railsを起動すると、ログイン画面に遷移できるので先ほど登録したメールアドレスとパスワードを入力してください。<br><br>
 
 </div>
 <b>注意事項</b>ローカル環境でユーザー1人が利用する前提で作成しています(セキュリティなど不備があることが考えられるため)
