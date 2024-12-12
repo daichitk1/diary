@@ -1,9 +1,9 @@
 <% if @today_memos.count > 0 || @today_posts.count > 0 %>
-<h2>今日の内容</h2>
 <div class="m-3 today_content" style="padding: 10px;  border: 1px solid #333333; border-radius: 10px;">
+  <h1><%= link_to "本日の記録", one_days_concrete_path(date: Time.now.strftime( "%Y-%m-%d")), class: "today_log" %></h1>
   <% if @today_memos.count > 0 %>
     <h3>メモ一覧</h3>
-    <div class="mb-5" id="memos">
+    <div class="m-2" id="memos">
       <% @today_memos.each do |memo| %>
       <div>
         <%= link_to memo.title, memo %>
@@ -13,7 +13,7 @@
   <% end %>
 
   <% if @today_posts.count > 0 %>
-    <h3>今日のタスク一覧</h3>
+    <h3>タスク一覧</h3>
     <div class="diary">
       <table class="table table-hover">
         <thead>
