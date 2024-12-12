@@ -28,7 +28,7 @@
   <h3>3. railsコンソールでユーザーを作成する</h3>
   以下のサイトを参考にパスワードの実装をしました。<br>
   https://qiita.com/ryosuketter/items/805452b7e6bf9637cb57<br><br>
-　
+
 そのため、railsコンソールをrails consoleで開いた後、以下のコマンドを入力し実行してください。<br>
 user = User.new(email: メールアドレス, password: 任意のパスワード)<br>
 user.save<br><br>
