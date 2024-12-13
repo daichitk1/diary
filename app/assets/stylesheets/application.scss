@@ -101,7 +101,7 @@ h1 {
   color: rgb(186, 246, 212);
 }
 
-.sns-only:hover {
+.sns:hover .sns-only {
   text-decoration: none;
   color: rgb(27, 103, 60);
 }
@@ -112,6 +112,7 @@ h1 {
   background-color: rgb(211, 251, 228);
   text-decoration: none;
 }
+
 
 
 .every-task:hover {
