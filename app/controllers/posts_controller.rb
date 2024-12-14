@@ -21,7 +21,7 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     if @post.save
-      redirect_to @post, notice: 'Post was successfully created.'
+      redirect_to @post, notice: 'タスクが作成されました'
     else
       render :new
     end
@@ -30,7 +30,7 @@ class PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
     if @post.update(post_params)
-      redirect_to @post, notice: 'Post was successfully updated.'
+      redirect_to @post, notice: 'タスクが更新されました'
     else
       render :edit
     end
@@ -61,7 +61,7 @@ class PostsController < ApplicationController
     @post.destroy!
 
     respond_to do |format|
-      format.html { redirect_to posts_path, status: :see_other, notice: "Memo was successfully destroyed." }
+      format.html { redirect_to posts_path, status: :see_other, notice: "タスクが削除されました" }
       format.json { head :no_content }
     end
   end

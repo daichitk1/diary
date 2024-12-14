@@ -2,8 +2,12 @@
 <%= link_to "開発一覧", developments_path, class: "btn btn-outline-primary mb-2" %>
 <h1>詳細</h1>
 <div class="my-3">
-  タイトル: <%= @development.title %>
-  内容: <%= @development.content %>
+  <div class="mb-4">
+    <h3>タイトル:</h3> <%= @development.title %><br>
+  </div>
+  <div class="mb-4">
+    <h3>内容:</h3> <%= simple_format(@development.content) %>
+  </div>
 </div>
 <div>
   <%= link_to "編集", edit_development_path(@development), class: "btn btn-outline-primary mt-3 mb-1" %> 

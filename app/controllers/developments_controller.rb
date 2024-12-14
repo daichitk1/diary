@@ -25,7 +25,7 @@ class DevelopmentsController < ApplicationController
 
     respond_to do |format|
       if @development.save
-        format.html { redirect_to @development, notice: "Development was successfully created." }
+        format.html { redirect_to @development, notice: "開発の作成に成功しました" }
         format.json { render :show, status: :created, location: @development }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +38,7 @@ class DevelopmentsController < ApplicationController
   def update
     respond_to do |format|
       if @development.update(development_params)
-        format.html { redirect_to @development, notice: "Development was successfully updated." }
+        format.html { redirect_to @development, notice: "開発の更新に成功しました" }
         format.json { render :show, status: :ok, location: @development }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,7 +52,7 @@ class DevelopmentsController < ApplicationController
     @development.destroy!
 
     respond_to do |format|
-      format.html { redirect_to developments_path, status: :see_other, notice: "Development was successfully destroyed." }
+      format.html { redirect_to developments_path, status: :see_other, notice: "開発の削除に成功しました" }
       format.json { head :no_content }
     end
   end

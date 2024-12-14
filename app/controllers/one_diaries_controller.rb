@@ -17,7 +17,6 @@ class OneDiariesController < ApplicationController
     @one_diary = OneDiary.new
     @today_posts = Post.where('start_time LIKE ?', "#{Time.now.strftime( "%Y-%m-%d")}%")
     @today_memos = Memo.where('created_at LIKE ?', "#{Time.now.strftime( "%Y-%m-%d")}%")
-
   end
 
   # GET /one_diaries/1/edit
@@ -31,15 +30,15 @@ class OneDiariesController < ApplicationController
   def create
     @one_diary = OneDiary.new(one_diary_params)
     @one_diary.images.attach(params[:images])
-    respond_to do |format|
-      if @one_diary.save
-        format.html { redirect_to @one_diary, notice: "One diary was successfully created." }
-        format.json { render :show, status: :created, location: @one_diary }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @one_diary.errors, status: :unprocessable_entity }
-      end
+    
+    if @one_diary.save
+      flash[:notice] = "日記の作成に成功しました"
+      redirect_to @one_diary
+    else
+      flash.now[:notice] = "日記の作成に失敗しました"
+      render :new
     end
+  
   end
 
   # PATCH/PUT /one_diaries/1 or /one_diaries/1.json
@@ -47,7 +46,7 @@ class OneDiariesController < ApplicationController
     @one_diary.images.attach(params[:images])
     respond_to do |format|
       if @one_diary.update(one_diary_params)
-        format.html { redirect_to @one_diary, notice: "One diary was successfully updated." }
+        format.html { redirect_to @one_diary, notice: "日記の更新に成功しました" }
         format.json { render :show, status: :ok, location: @one_diary }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -58,14 +57,11 @@ class OneDiariesController < ApplicationController
 
   # DELETE /one_diaries/1 or /one_diaries/1.json
   def destroy
-    @one_diary.destroy!
+    if @one_diary.destroy
+      redirect_to one_diaries_path, status: :see_other, notice: "日記が削除されました"
 
-    respond_to do |format|
-      format.html { redirect_to one_diaries_path, status: :see_other, notice: "One diary was successfully destroyed." }
-      format.json { head :no_content }
     end
-  end
-
+  end 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_one_diary

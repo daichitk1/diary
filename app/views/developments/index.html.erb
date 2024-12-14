@@ -2,13 +2,11 @@
 
 <h1>開発一覧</h1>
 
-<div id="developments">
+<div class="div_container">
   <% @developments.each do |development| %>
-    <div style="display: grid; grid-template-columns: repeat(3, 1fr);">
-      <div style="padding: 10px; margin-bottom: 10px; border: 1px solid #333333; border-radius: 10px;">
-        <h3><%= development.title %></h3><br>
-        <%= link_to "詳細を見る", development, class: "btn btn-outline-primary" %>
-      </div>
+    <div class="div_item" style="margin-bottom: 10px; border: 1px solid #333333; border-radius: 10px;">
+      <h3 style="height: 30px;"><%= development.title %></h3><br>
+      <%= link_to "詳細を見る", development, class: "btn btn-outline-primary" %>
     </div>
   <% end %>
 </div>

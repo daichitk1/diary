@@ -1,9 +1,6 @@
 <%= link_to 'メインページ', posts_path, class: "btn btn-outline-primary my-2" %>
 
 <h1>タスク編集</h1>
-<div>
-  <%= button_to "このタスクを削除する", @post, method: :delete , class: "btn btn-outline-danger my-1" %>
-</div>
 
 <%= form_with(model: @post, local: true) do |form| %>
   <div class="my-3" style="padding: 10px; margin-bottom: 10px; border: 1px solid #333333; border-radius: 10px;">

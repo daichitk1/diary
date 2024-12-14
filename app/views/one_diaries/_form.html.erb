@@ -48,9 +48,9 @@
   <div>
    <%= form.submit '決定', class: "btn btn-outline-primary" %>
   </div>
-  <% if @today_memos.count > 0 || @today_posts.count > 0 %>
+  <% if @today_memos.present? || @today_posts.present? %>
     <div class="my-3" style="padding: 10px;  border: 1px solid #333333; border-radius: 10px;">
-      <% if @today_memos.count > 0 %>
+      <% if @today_memos.present? %>
         <h3>メモ一覧</h3>
         <div class="mb-5" id="memos">
           <% @today_memos.each do |memo| %>
@@ -61,7 +61,7 @@
         </div>
       <% end %>
 
-      <% if @today_posts.count > 0 %>
+      <% if @today_posts.present? %>
         <h3>今日のタスク一覧</h3>
         <div class="diary">
           <table class="table table-hover">
