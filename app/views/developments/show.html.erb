@@ -1,10 +1,11 @@
 <p style="color: green"><%= notice %></p>
+<%= link_to "開発一覧", developments_path, class: "btn btn-outline-primary mb-2" %>
+<h1>詳細</h1>
 <div class="my-3">
   タイトル: <%= @development.title %>
   内容: <%= @development.content %>
 </div>
 <div>
-  <%= link_to "編集", edit_development_path(@development), class: "btn btn-primary" %> 
-  <%= link_to "開発一覧", developments_path, class: "btn btn-primary" %>
-  <%= button_to "削除", @development, method: :delete, class: "btn btn-danger my-3" %>
+  <%= link_to "編集", edit_development_path(@development), class: "btn btn-outline-primary mt-3 mb-1" %> 
+  <%= button_to "削除", @development, method: :delete, class: "btn btn-outline-danger" %>
 </div>
