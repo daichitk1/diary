@@ -33,7 +33,7 @@
           <% @today_posts.each do |post| %>
             <tr>
               <td><%= link_to post.title, edit_post_path(post.id) %></td> 
-              <td><%= post.content %></td>
+              <td><%= simple_format(post.content) %></td>
               <td><%= I18n.t("activerecord.attributes.post.status.#{post.status}", locale: :ja) %></td>
             </tr>
           <% end %>
