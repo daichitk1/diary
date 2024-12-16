@@ -42,3 +42,5 @@ rails sでruby on railsを起動すると、ログイン画面に遷移できる
 
 </div>
 <b>注意事項</b>ローカル環境でユーザー1人が利用する前提で作成しています(セキュリティなど不備があることが考えられるため)
+
+[![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=anuraghazra)](https://github.com/anuraghazra/github-readme-stats)
