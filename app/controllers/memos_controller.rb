@@ -50,16 +50,14 @@ class MemosController < ApplicationController
       end
     end
   end
+  
 
-  # DELETE /memos/1 or /memos/1.json
   def destroy
-    @memo.destroy!
-
-    respond_to do |format|
-      format.html { redirect_to memos_path, status: :see_other, notice: "メモの削除に成功しました" }
-      format.json { head :no_content }
+    if @memo.destroy
+      redirect_to memos_path, notice: "メモの削除に成功しました", status: :see_other
     end
-  end
+  end 
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

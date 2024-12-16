@@ -11,5 +11,5 @@
 </div>
 <div>
   <%= link_to "編集", edit_development_path(@development), class: "btn btn-outline-primary mt-3 mb-1" %> 
-  <%= button_to "削除", @development, method: :delete, class: "btn btn-outline-danger" %>
+  <%= link_to '削除', @development, method: :delete, data: { turbo_method: :delete, turbo_confirm: '本当に開発メモを削除しますか'}, class: "btn btn-outline-danger" %>
 </div>

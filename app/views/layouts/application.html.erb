@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   <script src="https://kit.fontawesome.com/357d3b79de.js" crossorigin="anonymous"></script>
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbo-track': 'reload' %>
     <title><%= content_for(:title) || "Diary" %></title>
@@ -15,6 +16,7 @@
     <link rel="icon" href="/icon.png" type="image/png">
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/icon.png">
+    <%= javascript_importmap_tags %>
     
   </head>
 
@@ -25,7 +27,7 @@
     <% if logged_in? %>
       <div class="login-status d-flex align-items-center" style="padding: 10px;  border: 1px solid #333333; border-radius: 10px;">
         ログイン中です。メールアドレス: <%= current_user.email %>
-        <%= button_to 'ログアウト', logout_path, method: :delete, data: { confirm: '本当にログアウトしますか' }, class: "btn btn-outline-danger mx-3" %>
+        <%= link_to 'ログアウト', logout_path, method: :delete, data: { turbo_method: :delete, turbo_confirm: '本当にログアウトしますか'}, class: "btn btn-outline-danger mx-3" %>
       </div>
     <% end %>
     <% if logged_in? %> 

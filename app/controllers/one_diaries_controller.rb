@@ -59,7 +59,6 @@ class OneDiariesController < ApplicationController
   def destroy
     if @one_diary.destroy
       redirect_to one_diaries_path, status: :see_other, notice: "日記が削除されました"
-
     end
   end 
   private

@@ -6,4 +6,4 @@
   <%= link_to "編集", edit_one_diary_path(@one_diary), class: "btn btn-outline-primary" %> 
 </div>
 
-<%= button_to "削除", @one_diary, method: :delete, class: "btn btn-outline-danger mb-4" %>
+<%= link_to '削除', @one_diary, method: :delete, data: { turbo_method: :delete, turbo_confirm: '本当にログアウトしますか'}, class: "btn btn-outline-danger mb-4" %>
