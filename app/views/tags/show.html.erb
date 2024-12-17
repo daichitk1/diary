@@ -1,6 +1,6 @@
-<h1>タグ: <%= @tag.name if @tag.present? %></h1>
+<h1>ハッシュタグ: <%= @tag.name if @tag.present? %></h1>
 <%  if @tag.present? %>
   <% @posts.each do |post| %>
-    <p><%= post.content %></p>
+    <%= post.content %>
   <% end %>
 <% end %>

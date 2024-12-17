@@ -11,7 +11,7 @@ class Post < ApplicationRecord
 
     def extract_and_save_tags
         # 投稿内容からハッシュタグを抽出（#付きの単語）
-        extracted_tags = content.scan(/#\w+/).map { |tag| tag.downcase.delete('#') }.uniq
+        extracted_tags = tag_content.scan(/#\w+/).map { |tag| tag.downcase.delete('#') }.uniq
 
         # 抽出したハッシュタグを保存
         extracted_tags.each do |tag_name|

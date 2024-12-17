@@ -69,7 +69,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :content, :status, :start_time, :important_status, :input_status, :input_important)
+    params.require(:post).permit(:title, :content, :status, :start_time, :important_status, :input_status, :input_important, :tag_content)
   end
 
   def memo_params

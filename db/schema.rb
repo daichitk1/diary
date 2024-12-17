@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_12_17_010704) do
+ActiveRecord::Schema[7.2].define(version: 2024_12_17_041542) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -80,6 +80,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_12_17_010704) do
     t.integer "status", default: 0, null: false
     t.boolean "simportant_status"
     t.integer "important_status", default: 0, null: false
+    t.string "tag_content"
   end
 
   create_table "taggings", force: :cascade do |t|

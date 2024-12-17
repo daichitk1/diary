@@ -14,6 +14,11 @@
       <%= form.label :content, "内容" %>
       <%= form.text_area :content, class: 'content form-control' %>
     </div>
+
+    <div class="field my-3">
+      <%= form.label :tag_content, "ハッシュタグ" %>
+      <%= form.text_area :tag_content, class: 'content form-control' %>
+    </div>
     <div class="time my-3">
       <%= form.label :start_time, "締め切り" %>
       <%= form.datetime_select :start_time, class: 'form-control' %>
