@@ -56,16 +56,14 @@
       <div>
         <%= link_to diary.date, one_diary_path(diary.id) %>
       </div>
-    <% end %> 
-    
+    <% end %>
     <h4 class="my-2"><%= link_to 'メモ一覧', memos_path, class:"next-title" %></h4>
     <% @memos.each do |memo| %>
       <div>
         <%= link_to memo.title, memo_path(memo.id) %>
       </div>
-    <% end %> 
+    <% end %>
   </div>
-  
 
   <div class="main-content" style="padding: 10px; margin-bottom: 10px; border: 1px solid #333333; border-radius: 10px;">
     <h1 class="mb-3"><%= link_to 'タスク', posts_all_path, class:"next-title" %></h1>

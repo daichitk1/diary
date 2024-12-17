@@ -8,7 +8,7 @@ class PostsController < ApplicationController
     @important_posts = Post.where(important_status: 1).order(created_at: :desc)
     @unprocessed_posts = Post.where(created_at: today.beginning_of_day..today.end_of_day,status: 0, important_status: 0).order(created_at: :desc).limit(15)
     @progress_posts = Post.where(created_at: today.beginning_of_day..today.end_of_day,status: 1, important_status: 0).order(created_at: :desc).limit(15)
-    @posts = Post.where.not(important_status: 2)
+    @posts = Post.where.not(important_status: 2).where.not(status: 2)
     @one_diaries = OneDiary.all
     @memos = Memo.all
   end
