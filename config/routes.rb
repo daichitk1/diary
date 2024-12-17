@@ -11,4 +11,5 @@ Rails.application.routes.draw do
   root 'posts#index' 
   get 'home/index'
   get '/one_days_concrete', to: 'onedays#concrete'
+  get 'tags/:name', to: 'tags#show', as: 'tag'
   end
