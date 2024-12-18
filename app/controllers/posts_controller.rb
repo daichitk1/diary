@@ -15,6 +15,7 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
+    @post.clear_tags_by_condition(params[:id])
     @posts = Post.all
   end
 
@@ -29,6 +30,7 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
+    @post.clear_tags_by_condition(params[:id])
     if @post.update(post_params)
       redirect_to @post, notice: 'タスクが更新されました'
     else
