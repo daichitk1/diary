@@ -14,6 +14,7 @@ class PostsController < ApplicationController
   end
 
   def new
+    @tags = Tag.all
     @post = Post.new
     @post.clear_tags_by_condition(params[:id])
     @posts = Post.all
@@ -39,6 +40,7 @@ class PostsController < ApplicationController
   end
 
   def edit
+    @tags = Tag.all
     @post = Post.find(params[:id])
     @posts = Post.all
   end
