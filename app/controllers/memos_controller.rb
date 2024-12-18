@@ -32,8 +32,8 @@ class MemosController < ApplicationController
 
     respond_to do |format|
       if @memo.save
-        format.html { redirect_to @memo, notice: "メモの作成に成功しました" }
-        format.json { render :show, status: :created, location: @memo }
+        flash[:notice] = "メモの作成に成功しました"
+        redirect_to @memo, status: :see_other
       end
     end
   end
@@ -42,11 +42,11 @@ class MemosController < ApplicationController
   def update
     respond_to do |format|
       if @memo.update(memo_params)
-        format.html { redirect_to @memo, notice: "メモの更新に成功しました" }
-        format.json { render :show, status: :ok, location: @memo }
+        flash[:notice] = "メモの更新に成功しました"
+        redirect_to @memo, status: :see_other
       else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @memo.errors, status: :unprocessable_entity }
+        flash.now[:notice] = "日記の更新に失敗しました"
+        render :edit
       end
     end
   end
@@ -54,7 +54,8 @@ class MemosController < ApplicationController
 
   def destroy
     if @memo.destroy
-      redirect_to memos_path, notice: "メモの削除に成功しました", status: :see_other
+      flash.now[:danger] = "メモの削除に成功しました"
+      redirect_to memos_path, status: :see_other
     end
   end 
 

@@ -185,3 +185,21 @@ h1 {
   height: 120px;
   width: 300px;
 }
+
+.flash-message {
+  border-radius: 5px;
+  padding: 16px 24px;
+  margin: 16px 0px;
+}
+
+.flash-message.notice {
+  background-color: #bcdfff;
+  color: #0067C0;
+  border: solid 1px #0067C0;
+}
+
+.flash-message.danger {
+  background-color: #ffbcbc;
+  color: #c00000;
+  border: solid 1px #c00000;
+}

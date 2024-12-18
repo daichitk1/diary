@@ -30,15 +30,13 @@ class OneDiariesController < ApplicationController
   def create
     @one_diary = OneDiary.new(one_diary_params)
     @one_diary.images.attach(params[:images])
-    
     if @one_diary.save
       flash[:notice] = "日記の作成に成功しました"
-      redirect_to @one_diary
+      redirect_to @one_diary, status: :see_other
     else
       flash.now[:notice] = "日記の作成に失敗しました"
       render :new
     end
-  
   end
 
   # PATCH/PUT /one_diaries/1 or /one_diaries/1.json
@@ -46,11 +44,12 @@ class OneDiariesController < ApplicationController
     @one_diary.images.attach(params[:images])
     respond_to do |format|
       if @one_diary.update(one_diary_params)
-        format.html { redirect_to @one_diary, notice: "日記の更新に成功しました" }
-        format.json { render :show, status: :ok, location: @one_diary }
+        redirect_to @one_diary
+        flash.now[:notice] = "日記の更新に成功しました"
+        render :show
       else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @one_diary.errors, status: :unprocessable_entity }
+        flash.now[:notice] = "日記の更新に失敗しました"
+        render :edit
       end
     end
   end
@@ -58,7 +57,8 @@ class OneDiariesController < ApplicationController
   # DELETE /one_diaries/1 or /one_diaries/1.json
   def destroy
     if @one_diary.destroy
-      redirect_to one_diaries_path, status: :see_other, notice: "日記が削除されました"
+      flash[:danger] = "日記が削除されました"
+      redirect_to one_diaries_path, status: :see_other
     end
   end 
   private

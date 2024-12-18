@@ -23,7 +23,8 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     if @post.save
-      redirect_to @post, notice: 'タスクが作成されました'
+      flash[:notice] = "タスクの作成に成功しました"
+      redirect_to @post, status: :see_other
     else
       render :new
     end
@@ -33,7 +34,8 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @post.clear_tags_by_condition(params[:id])
     if @post.update(post_params)
-      redirect_to @post, notice: 'タスクが更新されました'
+      flash[:notice] = "タスクの更新に成功しました"
+      redirect_to @post, status: :see_other
     else
       render :edit
     end
@@ -65,8 +67,9 @@ class PostsController < ApplicationController
     @post.destroy!
 
     respond_to do |format|
-      format.html { redirect_to posts_path, status: :see_other, notice: "タスクが削除されました" }
-      format.json { head :no_content }
+      flash[:notice] = "タスクの削除に成功しました"
+      redirect_to posts_path, status: :see_other
+
     end
   end
 

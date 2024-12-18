@@ -120,6 +120,9 @@
           <h2><%= link_to "まだ本日の日記が作成されておりません", new_one_diary_path, class: "diary-color" %></h2>
         <% end %>
       </div>
+      <% flash.each do |message_type, message| %>
+        <div class="flash-message <%= message_type %>"><%= message %></div>
+      <% end %>
       <div style="padding: 10px; margin-bottom: 10px; border: 2px solid #333333; border-radius: 10px;">
         <%= yield %>
       </div>
