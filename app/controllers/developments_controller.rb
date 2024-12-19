@@ -22,38 +22,31 @@ class DevelopmentsController < ApplicationController
   # POST /developments or /developments.json
   def create
     @development = Development.new(development_params)
-
-    respond_to do |format|
-      if @development.save
-        format.html { redirect_to @development, notice: "開発の作成に成功しました" }
-        format.json { render :show, status: :created, location: @development }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @development.errors, status: :unprocessable_entity }
-      end
+    if @development.save
+      flash[:notice] = "開発の作成に成功しました"
+      redirect_to @development
+    else
+      flash.now[:notice] = "開発の作成に失敗しました"
+      render :new, status: :unprocessable_entity
     end
   end
 
   # PATCH/PUT /developments/1 or /developments/1.json
   def update
-    respond_to do |format|
-      if @development.update(development_params)
-        format.html { redirect_to @development, notice: "開発の更新に成功しました" }
-        format.json { render :show, status: :ok, location: @development }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @development.errors, status: :unprocessable_entity }
-      end
+    if @development.update(development_params)
+      flash[:notice] = "開発の更新に成功しました"
+      redirect_to @development
+    else
+      flash.now[:danger] = "開発の更新に失敗しました"
+      render :edit, status: :unprocessable_entity
     end
   end
 
   # DELETE /developments/1 or /developments/1.json
   def destroy
-    @development.destroy!
-
-    respond_to do |format|
-      format.html { redirect_to developments_path, status: :see_other, notice: "開発の削除に成功しました" }
-      format.json { head :no_content }
+    if @development.destroy!
+      flash[:danger] = "開発の削除に成功しました"
+      redirect_to developments_path, status: :see_other
     end
   end
 

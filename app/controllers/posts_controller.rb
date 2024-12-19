@@ -64,12 +64,9 @@ class PostsController < ApplicationController
 
   def destroy
     @post = Post.find(params[:id])
-    @post.destroy!
-
-    respond_to do |format|
-      flash[:notice] = "タスクの削除に成功しました"
+    if @post.destroy!
+      flash[:danger] = "タスクの削除に成功しました"
       redirect_to posts_path, status: :see_other
-
     end
   end
 

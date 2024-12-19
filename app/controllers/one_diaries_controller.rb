@@ -42,15 +42,12 @@ class OneDiariesController < ApplicationController
   # PATCH/PUT /one_diaries/1 or /one_diaries/1.json
   def update
     @one_diary.images.attach(params[:images])
-    respond_to do |format|
-      if @one_diary.update(one_diary_params)
-        redirect_to @one_diary
-        flash.now[:notice] = "日記の更新に成功しました"
-        render :show
-      else
-        flash.now[:notice] = "日記の更新に失敗しました"
-        render :edit
-      end
+    if @one_diary.update(one_diary_params)
+      flash[:notice] = "日記の更新に成功しました"
+      redirect_to @one_diary, status: :see_other
+    else
+      flash.now[:notice] = "日記の更新に失敗しました"
+      render :edit
     end
   end
 

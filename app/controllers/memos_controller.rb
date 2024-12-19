@@ -29,32 +29,27 @@ class MemosController < ApplicationController
   # POST /memos or /memos.json
   def create
     @memo = Memo.new(memo_params)
-
-    respond_to do |format|
-      if @memo.save
-        flash[:notice] = "メモの作成に成功しました"
-        redirect_to @memo, status: :see_other
-      end
+    if @memo.save
+      flash[:notice] = "メモの作成に成功しました"
+      redirect_to memo_path(@memo), status: :see_other
     end
   end
 
   # PATCH/PUT /memos/1 or /memos/1.json
   def update
-    respond_to do |format|
-      if @memo.update(memo_params)
-        flash[:notice] = "メモの更新に成功しました"
-        redirect_to @memo, status: :see_other
-      else
-        flash.now[:notice] = "日記の更新に失敗しました"
-        render :edit
-      end
+    if @memo.update(memo_params)
+      flash[:notice] = "メモの更新に成功しました"
+      redirect_to memo_path(@memo), status: :see_other
+    else
+      flash.now[:notice] = "日記の更新に失敗しました"
+      render :edit
     end
   end
   
 
   def destroy
     if @memo.destroy
-      flash.now[:danger] = "メモの削除に成功しました"
+      flash[:danger] = "メモの削除に成功しました"
       redirect_to memos_path, status: :see_other
     end
   end 
