@@ -19,18 +19,22 @@
       <%= form.label :tag_content, "ハッシュタグ" %>
       <%= form.text_area :tag_content, class: 'content form-control' %>
     </div>
+    <h4 class="mt-3">ハッシュタグ候補</h4>
+    <% @tags.each do |tag| %>
+      <div id="hashTag"><%= tag.name %></div>
+    <% end %>
     <div class="time my-3">
       <%= form.label :start_time, "締め切り" %>
       <%= form.datetime_select :start_time, class: 'form-control' %>
     </div>
     <div class="form-group my-3">
       <%= form.label :status, '状態' %>
-      <%= form.select :status, Post.statuses.keys.map { |status| [I18n.t("activerecord.attributes.post.statuses.#{status}",locale: :ja), status] }, {}, class: 'form-control w-25' %>
+      <%= form.select :status, Post.statuses.keys.map { |status| [I18n.t("activerecord.attributes.post.statuses.#{status}",locale: :ja), status] }, {}, class: 'status form-control w-25' %>
     </div>
 
     <div class="form-group my-3">
       <%= form.label :important_status, '重要度' %>
-      <%= form.select :important_status, Post.important_statuses.keys.map { |important_status| [I18n.t("activerecord.attributes.post.important_statuses.#{important_status}",locale: :ja), important_status] }, {}, class: 'form-control w-25' %>
+      <%= form.select :important_status, Post.important_statuses.keys.map { |important_status| [I18n.t("activerecord.attributes.post.important_statuses.#{important_status}",locale: :ja), important_status] }, {}, class: 'important_status form-control w-25' %>
 
     </div>
 

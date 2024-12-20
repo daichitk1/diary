@@ -7,3 +7,11 @@ const colorBg = () => {
 }
 
 color.addEventListener(`input`, colorBg)
+
+
+const hash_tag = document.getElementById('hashTag')
+const tag = document.querySelector('#hashTag')
+const moveTag = () => {
+    console.log(hash_tag.textContent);
+
+tag.addEventListener(`click`, moveTag)
