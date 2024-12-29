@@ -3,7 +3,7 @@
 <%= render @one_diary %>
 
 <div class="my-3">
-  <%= link_to "編集", edit_one_diary_path(@one_diary), class: "btn btn-outline-primary" %> 
+  <%= link_to "編集", edit_one_diary_path(@one_diary), class: "btn btn-outline-success" %> 
 </div>
 
 <%= link_to '削除', @one_diary, method: :delete, data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか'}, class: "btn btn-outline-danger mb-4" %>
