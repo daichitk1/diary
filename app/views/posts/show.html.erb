@@ -1,7 +1,7 @@
 <%= link_to '削除', @post, method: :delete, data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか'}, class: "btn btn-outline-danger mb-3" %>
 <%= link_to 'タスク一覧', posts_path, class: "btn btn-outline-primary mb-2" %>
 <h1>タスク詳細</h1>
-<div class="my-3">   
+<div class="my-3">
   <b>タイトル</b><br>
   <%= @post.title %>
 </div>
