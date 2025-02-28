@@ -27,7 +27,7 @@
     <% if logged_in? %>
       <div class="login-status d-flex align-items-center" style="padding: 10px;  border: 1px solid #333333; border-radius: 10px;">
         ログイン中です。メールアドレス: <%= current_user.email %>
-        <%= link_to 'ログアウト', logout_path, method: :delete, data: { turbo_method: :delete, turbo_confirm: '本当にログアウトしますか'}, class: "btn btn-outline-danger mx-3" %>
+        <%= button_to 'ログアウト', logout_path, method: :delete, class: "btn btn-outline-danger mx-3" %>
       </div>
     <% end %>
     <% if logged_in? %> 
