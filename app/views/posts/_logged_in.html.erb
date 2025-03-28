@@ -3,7 +3,7 @@
   <%= link_to 'メモ新規作成', new_memo_path, class: "btn btn-primary mx-2" %>
   <%= link_to '日記新規作成', new_one_diary_path, class: "btn btn-primary mx-2" %>
   <%= link_to '開発新規作成', new_development_path, class: "btn btn-primary mx-2" %>
-</div>  
+</div>
 <% if @today_memos.count > 0 || @today_posts.count > 0 %>
 <div class="m-3 today_content" style="padding: 10px;  border: 1px solid #333333; border-radius: 10px;">
   <h1><%= link_to "本日の記録", one_days_concrete_path(date: Time.now.strftime( "%Y-%m-%d")), class: "today_log" %></h1>

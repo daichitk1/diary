@@ -24,13 +24,7 @@
     <header>
       <h1 class="py-1 px-3 main-title">自己総合管理ツール</h1>
     </header>
-    <% if logged_in? %>
-      <div class="login-status d-flex align-items-center" style="padding: 10px;  border: 1px solid #333333; border-radius: 10px;">
-        ログイン中です。メールアドレス: <%= current_user.email %>
-        <%= button_to 'ログアウト', logout_path, method: :delete, class: "btn btn-outline-danger mx-3" %>
-      </div>
-    <% end %>
-    <% if logged_in? %>
+
       <div>
         <%= link_to 'メインページ', posts_path, class: "btn btn-primary" %>
         <%= link_to 'タスク一覧', posts_all_path, class: "btn btn-secondary" %>
@@ -113,7 +107,6 @@
           </a>
         </div>
       </div>
-    <% end %>
     <body>
       <div class="d-flex justify-content-between">
         <h2><%= Time.now.strftime('%m月%d日 %H時%M分') %></h2>
