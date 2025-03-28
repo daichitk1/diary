@@ -34,5 +34,5 @@ production:
   adapter: postgresql
   encoding: unicode
   pool: 5
-  database: <%= ENV['HEROKU_POSTGRESQL_GRAY_URL'] %>
+  database: <%= ENV['DATABASE_URL'] %>
   # database: path/to/persistent/storage/production.sqlite3
