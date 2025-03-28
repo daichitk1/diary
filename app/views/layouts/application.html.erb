@@ -22,7 +22,7 @@
 
   <div class="all">
     <header>
-      <h1 class="py-1 px-3 main-title">猫と山と人生⛰️</h1>
+      <h1 class="py-1 px-3 main-title">自己総合管理ツール</h1>
     </header>
     <% if logged_in? %>
       <div class="login-status d-flex align-items-center" style="padding: 10px;  border: 1px solid #333333; border-radius: 10px;">
@@ -30,7 +30,7 @@
         <%= button_to 'ログアウト', logout_path, method: :delete, class: "btn btn-outline-danger mx-3" %>
       </div>
     <% end %>
-    <% if logged_in? %> 
+    <% if logged_in? %>
       <div>
         <%= link_to 'メインページ', posts_path, class: "btn btn-primary" %>
         <%= link_to 'タスク一覧', posts_all_path, class: "btn btn-secondary" %>
