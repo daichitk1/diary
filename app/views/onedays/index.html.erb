@@ -16,9 +16,9 @@
     </thead>
     <tbody>
       <tr>
-        <td><%= Post.where('start_time LIKE ?', "#{date}%").count %></td> 
-        <td><%= Memo.where('created_at LIKE ?', "#{date}%").count %></td>
-        <td><%= OneDiary.where('created_at LIKE ?', "#{date}%").count %></td>
+        <td><%= Post.where("DATE(start_at) = ?", "#{date}%").count %></td> 
+        <td><%= Memo.where("DATE(created_at) = ?", "#{date}%").count %></td>
+        <td><%= OneDiary.where("DATE(created_at) = ?", "#{date}%").count %></td>
       </tr>
     </tbody>
   </table>
