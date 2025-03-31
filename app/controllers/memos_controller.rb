@@ -1,5 +1,4 @@
 class MemosController < ApplicationController
-  before_action :logged_in_user
   before_action :set_memo, only: %i[ show edit update destroy ]
 
   # GET /memos or /memos.json

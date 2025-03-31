@@ -1,5 +1,4 @@
 class OneDiariesController < ApplicationController
-  before_action :logged_in_user
   before_action :set_one_diary, only: %i[ show edit update destroy ]
 
   # GET /one_diaries or /one_diaries.json

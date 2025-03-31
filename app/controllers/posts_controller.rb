@@ -1,5 +1,4 @@
 class PostsController < ApplicationController
-  before_action :logged_in_user, except: [:index]
   def index
     @today_posts = Post.where("DATE(start_time) = ?", Date.today)
     @today_memos = Memo.where("DATE(created_at) = ?", Date.today)
