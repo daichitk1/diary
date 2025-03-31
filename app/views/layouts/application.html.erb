@@ -85,7 +85,7 @@
       </div>
     <body>
       <div class="d-flex justify-content-between">
-        <% if OneDiary.where('created_at LIKE ?', "#{Date.today}%").count == 0 %>
+        <% if OneDiary.where("DATE(created_at) = ?", Date.today).count == 0 %>
           <h2><%= link_to "まだ本日の日記が作成されておりません", new_one_diary_path, class: "diary-color" %></h2>
         <% end %>
       </div>

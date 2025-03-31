@@ -15,14 +15,14 @@ class OneDiariesController < ApplicationController
   # GET /one_diaries/new
   def new
     @one_diary = OneDiary.new
-    @today_posts = Post.where('start_time LIKE ?', "#{Date.today}%")
-    @today_memos = Memo.where('created_at LIKE ?', "#{Date.today}%")
+    @today_posts = Post.where("DATE(start_time) = ?", Date.today)
+    @today_memos = Memo.where("DATE(created_at) = ?", Date.today)
   end
 
   # GET /one_diaries/1/edit
   def edit
-    @today_posts = Post.where('start_time LIKE ?', "#{Date.today}%")
-    @today_memos = Memo.where('created_at LIKE ?', "#{Date.today}%")
+    @today_posts = Post.where("DATE(start_time) = ?", Date.today)
+    @today_memos = Memo.where("DATE(created_at) = ?", Date.today)
 
   end
 

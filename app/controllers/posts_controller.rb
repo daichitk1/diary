@@ -1,8 +1,8 @@
 class PostsController < ApplicationController
   before_action :logged_in_user, except: [:index]
   def index
-    @today_posts = Post.where('start_time LIKE ?', "#{Date.today}%")
-    @today_memos = Memo.where('created_at LIKE ?', "#{Date.today}%")
+    @today_posts = Post.where("DATE(start_time) = ?", Date.today)
+    @today_memos = Memo.where("DATE(created_at) = ?", Date.today)
     today = Date.today
     @every_day_posts = Post.where(important_status: 2).order(created_at: :desc)
     @important_posts = Post.where(important_status: 1).order(created_at: :desc)
