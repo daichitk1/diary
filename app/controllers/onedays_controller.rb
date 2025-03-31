@@ -5,8 +5,8 @@ class OnedaysController < ApplicationController
 
   def concrete
     @posts = Post.where('start_time LIKE ?', "#{params[:date]}%")
-    @memos = Memo.where('created_at LIKE ?', "#{params[:date]}%")
-    @one_diaries = OneDiary.where('created_at LIKE ?', "#{params[:date]}%")
+    @today_memos = Memo.where("DATE(created_at) = ?", "#{params[:date]}%")
+    @one_diaries = OneDiary.where("DATE(created_at) = ?", "#{params[:date]}%")
   end 
 
   private
