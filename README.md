@@ -17,7 +17,7 @@
 <div>
   <h2>利用方法</h2>
   こちらのURLで公開しました。
-<a href="https://desolate-cliffs-66576-cc5b606ff424.herokuapp.com/"></a>アプリページ<a>
+<a href="https://desolate-cliffs-66576-cc5b606ff424.herokuapp.com/">アプリページ</a>
 <h2>ローカルで動かす方法</h2>
   <h3>1. git cloneを行い、ローカルの環境にコードを持ってくる</h3>
   <h3>2.rubyの環境構築を行なう</h3>
