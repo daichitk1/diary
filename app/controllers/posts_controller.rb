@@ -29,13 +29,14 @@ class PostsController < ApplicationController
     end
   end
 
+
   def update
     @post = Post.find(params[:id])
-    @post.clear_tags_by_condition(params[:id])
     if @post.update(post_params)
       flash[:notice] = "タスクの更新に成功しました"
       redirect_to @post, status: :see_other
     else
+      flash.now[:notice] = "タスクの更新に失敗しました"
       render :edit
     end
   end
