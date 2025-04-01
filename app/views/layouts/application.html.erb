@@ -23,7 +23,6 @@
     <header>
       <h1 class="py-1 px-3 main-title">自己総合管理ツール</h1>
     </header>
-
       <div>
         <%= link_to 'メインページ', posts_path, class: "btn btn-primary" %>
         <%= link_to 'タスク一覧', posts_all_path, class: "btn btn-secondary" %>
@@ -92,7 +91,6 @@
         <div class="flash-message <%= message_type %>"><%= message %></div>
       <% end %>
       <div style="padding: 10px; margin-bottom: 10px; border: 2px solid #333333; border-radius: 10px;">
-      <input id="colorPicker" type="color">
         <%= yield %>
       </div>
     </body>
