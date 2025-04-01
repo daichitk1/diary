@@ -58,7 +58,7 @@ class PostsController < ApplicationController
     end
     if params[:input_status] != "" && params[:input_status].present?
       @posts = @posts.where(status: params[:input_status])
-    end  
+    end
   end
 
   def destroy

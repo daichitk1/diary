@@ -1,5 +1,5 @@
 <div>
-  <%= link_to '削除', @memo, method: :delete, data: { turbo_method: :delete, turbo_confirm: '本当にメモを削除しますか'}, class: "btn btn-outline-danger" %>
+   <%= button_to "削除",  @memo, method: :delete, class:" btn btn-danger", form: {data: {turbo_confirm: '削除してもよろしいですか'}}, class: "btn btn-outline-danger mb-3"  %>
 </div>
 <%= link_to "メモ一覧", memos_path, class: "btn btn-outline-primary"   %>
 <%= link_to "メモ編集", edit_memo_path(@memo), class: "btn btn-outline-success" %>
