@@ -25,7 +25,7 @@ class PostsController < ApplicationController
       flash[:notice] = "タスクの作成に成功しました"
       redirect_to @post, status: :see_other
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -37,7 +37,7 @@ class PostsController < ApplicationController
       redirect_to @post, status: :see_other
     else
       flash.now[:notice] = "タスクの更新に失敗しました"
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 

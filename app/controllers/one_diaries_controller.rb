@@ -32,7 +32,7 @@ class OneDiariesController < ApplicationController
       redirect_to @one_diary, status: :see_other
     else
       flash.now[:notice] = "日記の作成に失敗しました"
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -44,7 +44,7 @@ class OneDiariesController < ApplicationController
       redirect_to @one_diary, status: :see_other
     else
       flash.now[:notice] = "日記の更新に失敗しました"
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 
