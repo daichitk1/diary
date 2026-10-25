@@ -2,79 +2,98 @@
 <html>
   <head>
   <script src="https://kit.fontawesome.com/357d3b79de.js" crossorigin="anonymous"></script>
-  <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbo-track': 'reload' %>
     <title><%= content_for(:title) || "Diary" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= yield :head %>
-  
+
     <link href=”https://use.fontawesome.com/releases/v6.0.0/css/all.css” rel=”stylesheet”>
-    <link rel="manifest" href="/manifest.json">
     <link rel="icon" href="/icon.png" type="image/png">
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/icon.png">
-    
+    <%= javascript_importmap_tags %>
+
   </head>
 
   <div class="all">
-    <header class="title bg-primary">
-      <h1>猫と山と人生</h1>
+    <header>
+      <h1 class="py-1 px-3 main-title">自己総合管理ツール</h1>
     </header>
-    <% if logged_in? %> 
-      <%= link_to 'メインページ', posts_path, class: "btn btn-primary" %>
-      <%= link_to 'タスク一覧', posts_all_path, class: "btn btn-secondary" %>
-      <%= link_to '日記一覧', one_diaries_path, class: "btn btn-primary" %>
-      <%= link_to 'メモ一覧', memos_path, class: "btn btn-success" %>
-      <%= link_to '新規メモ', new_memo_path, class: "btn btn-success" %>
-      <%= button_to 'ログアウト', logout_path, method: :delete, data: { confirm: '本当にログアウトしますか' }, class: "btn btn-danger my-3" %>
-    <% end %>
-    <body>
-      <h2><%= Time.now.strftime('%m月%d日 %H時%M分') %></h2>
-      <% if logged_in? %>
-        <div class="m-3" style="padding: 10px; margin-bottom: 10px; border: 1px solid #333333; border-radius: 10px;">
-          ログイン中です。メールアドレス: <%= current_user.email %>
-        </div>
-      <% end %>
-      <div class="m-3 d-flex justify-content-start" style="padding: 10px; margin-bottom: 10px; border: 1px solid #333333; border-radius: 10px;">
-        <div class="mx-3">
-          <a href="https://www.youtube.com" target="_blank">
+      <div>
+        <%= link_to 'メインページ', posts_path, class: "btn btn-primary" %>
+        <%= link_to 'タスク一覧', posts_all_path, class: "btn btn-secondary" %>
+        <%= link_to '日記一覧', one_diaries_path, class: "btn btn-primary" %>
+        <%= link_to 'メモ一覧', memos_path, class: "btn btn-success" %>
+        <%= link_to '開発一覧', developments_path, class: "btn btn-warning" %>
+        <%= link_to '記録一覧', onedays_path, class: "btn btn-info mx-5" %>
+       <a href="https://react-portfolio.cat-and-mountain.com", class="btn btn-info">ポートフォリオ</a>
+      </div>
+      <div class="mx-3 my-4 d-flex justify-content-start sns-list" style="padding: 10px; margin-bottom: 10px; border: 1px solid #333333; border-radius: 10px;">
+        <div class="sns mx-2" style="padding: 10px; border: 1px solid #333333; border-radius: 10px;">
+          <a class="sns-only" href="https://www.youtube.com" target="_blank">
               YouTube
-              <i class="fa-brands fa-youtube">
-              </i>
+              <i class="fa-brands fa-youtube"></i>
           </a>
         </div>
-        <div class="mx-3">
-          <a href="https://chatgpt.com/#" target="_blank">
+        <div class="sns mx-2" style="padding: 10px; border: 1px solid #333333; border-radius: 10px;">
+          <a class="sns-only" href="https://chatgpt.com/#" target="_blank">
             ChatGPT
             <i class="fa-brands fa-rocketchat"></i>
-            </i>
           </a>
         </div>
-        <div class="mx-3">
-          <a href="https://github.com/daichitk1/dairy" target="_blank">
+        <div class="sns mx-2" style="padding: 10px; border: 1px solid #333333; border-radius: 10px;">
+          <a class="sns-only" href="https://github.com/daichitk1" target="_blank">
             Git hub
             <i class="fa-brands fa-github"></i>
           </a>
         </div>
-        <div class="mx-3">
-          <a href="https://www.udemy.com" target="_blank">
+        <div class="sns mx-2" style="padding: 10px; border: 1px solid #333333; border-radius: 10px;">
+          <a class="sns-only" href="https://www.udemy.com" target="_blank">
             Udemy
             <i class="fa-solid fa-book"></i>
           </a>
         </div>
-        <div class="mx-3">
-          <a href="https://cat-and-mountain.com/aaa.html" target="_blank">外部サイト</a>
+        <div class="sns mx-2" style="padding: 10px; border: 1px solid #333333; border-radius: 10px;">
+          <a class="sns-only" href="https://www.instagram.com" target="_blank">
+            Instagram
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+        </div>
+        <div class="sns mx-2" style="padding: 10px; border: 1px solid #333333; border-radius: 10px;">
+          <a class="sns-only" href="https://www.strava.com/dashboard" target="_blank">
+            STRAVA
+            <i class="fa-solid fa-bicycle"></i>
+          </a>
+        </div>
+        <div class="sns mx-2" style="padding: 10px; border: 1px solid #333333; border-radius: 10px;">
+          <a class="sns-only" href="https://qiita.com/daichitk1" target="_blank">
+            Qiita
+            <i class="fa-solid fa-q"></i>
+          </a>
+        </div>
+        <div class="sns mx-2" style="padding: 10px; border: 1px solid #333333; border-radius: 10px;">
+          <a class="sns-only" href="https://x.com/home" target="_blank">
+            <i class="fa-solid fa-x"></i>
+          </a>
         </div>
       </div>
-      <div style="padding: 10px; margin-bottom: 10px; border: 1px solid #333333; border-radius: 10px;">
-      
+    <body>
+      <div class="d-flex justify-content-between">
+        <% if OneDiary.where("DATE(created_at) = ?", Date.today).count == 0 %>
+          <h2><%= link_to "まだ本日の日記が作成されておりません", new_one_diary_path, class: "diary-color" %></h2>
+        <% end %>
+      </div>
+      <% flash.each do |message_type, message| %>
+        <div class="flash-message <%= message_type %>"><%= message %></div>
+      <% end %>
+      <div class="main-design">
         <%= yield %>
       </div>
     </body>
-    <footer class="bg-secondary h-15">
-      
+    <footer class="bg-primary">
     </footer>
   </div>
 </html>

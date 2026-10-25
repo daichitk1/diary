@@ -1,5 +1,4 @@
 class MemosController < ApplicationController
-  before_action :logged_in_user
   before_action :set_memo, only: %i[ show edit update destroy ]
 
   # GET /memos or /memos.json
@@ -29,37 +28,31 @@ class MemosController < ApplicationController
   # POST /memos or /memos.json
   def create
     @memo = Memo.new(memo_params)
-
-    respond_to do |format|
-      if @memo.save
-        format.html { redirect_to @memo, notice: "Memo was successfully created." }
-        format.json { render :show, status: :created, location: @memo }
-      end
+    if @memo.save
+      flash[:notice] = "メモの作成に成功しました"
+      redirect_to memo_path(@memo), status: :see_other
     end
   end
 
   # PATCH/PUT /memos/1 or /memos/1.json
   def update
-    respond_to do |format|
-      if @memo.update(memo_params)
-        format.html { redirect_to @memo, notice: "Memo was successfully updated." }
-        format.json { render :show, status: :ok, location: @memo }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @memo.errors, status: :unprocessable_entity }
-      end
+    if @memo.update(memo_params)
+      flash[:notice] = "メモの更新に成功しました"
+      redirect_to memo_path(@memo), status: :see_other
+    else
+      flash.now[:notice] = "日記の更新に失敗しました"
+      render :edit, status: :unprocessable_entity
     end
   end
 
-  # DELETE /memos/1 or /memos/1.json
+
   def destroy
-    @memo.destroy!
-
-    respond_to do |format|
-      format.html { redirect_to memos_path, status: :see_other, notice: "Memo was successfully destroyed." }
-      format.json { head :no_content }
+    if @memo.destroy
+      flash[:danger] = "メモの削除に成功しました"
+      redirect_to memos_path, status: :see_other
     end
   end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -69,6 +62,6 @@ class MemosController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def memo_params
-      params.require(:memo).permit(:title, :content, :query)
+      params.require(:memo).permit(:title, :content, :query, :page)
     end
 end

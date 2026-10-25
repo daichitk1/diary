@@ -2,44 +2,53 @@ require "application_system_test_case"
 
 class OneDiariesTest < ApplicationSystemTestCase
   setup do
-    @one_diary = one_diaries(:one)
+    @record = one_diaries(:one)
   end
 
   test "visiting the index" do
     visit one_diaries_url
-    assert_selector "h1", text: "One diaries"
+    assert_selector "h1", text: "日記一覧"
   end
 
-  test "should create one diary" do
+  test "create record through the existing Japanese form" do
     visit one_diaries_url
-    click_on "New one diary"
-
-    fill_in "Content", with: @one_diary.content
-    fill_in "Date", with: @one_diary.date
-    fill_in "Title", with: @one_diary.title
-    click_on "Create One diary"
-
-    assert_text "One diary was successfully created"
-    click_on "Back"
+    click_on "新規作成"
+    fill_in "one_diary_title", with: "system created"
+    fill_in "one_diary_content", with: "synthetic content"
+    fill_in "one_diary_date", with: Date.new(2024, 11, 15)
+    assert_field "one_diary_date", with: "2024-11-15"
+    click_on "決定"
+    assert_text "日記の作成に成功しました"
+    assert_text "system created"
   end
 
-  test "should update One diary" do
-    visit one_diary_url(@one_diary)
-    click_on "Edit this one diary", match: :first
-
-    fill_in "Content", with: @one_diary.content
-    fill_in "Date", with: @one_diary.date
-    fill_in "Title", with: @one_diary.title
-    click_on "Update One diary"
-
-    assert_text "One diary was successfully updated"
-    click_on "Back"
+  test "update record through the existing Japanese form" do
+    visit one_diary_url(@record)
+    click_on "編集", match: :first
+    fill_in "one_diary_title", with: "system updated"
+    click_on "決定"
+    assert_text "日記の更新に成功しました"
+    assert_text "system updated"
   end
 
-  test "should destroy One diary" do
-    visit one_diary_url(@one_diary)
-    click_on "Destroy this one diary", match: :first
-
-    assert_text "One diary was successfully destroyed"
+  test "destroy record through confirmation" do
+    visit one_diary_url(@record)
+    accept_confirm { click_on "削除", match: :first }
+    assert_text "日記が削除されました"
+    assert_not OneDiary.exists?(@record.id)
+  end
+  test "duplicate date displays errors and a valid retry succeeds" do
+    visit new_one_diary_url
+    fill_in "one_diary_title", with: "duplicate browser date"
+    fill_in "one_diary_content", with: "synthetic content"
+    fill_in "one_diary_date", with: @record.date
+    assert_field "one_diary_date", with: @record.date.iso8601
+    click_on "決定"
+    assert_text "prohibited this one_diary"
+    fill_in "one_diary_date", with: Date.new(2024, 11, 15)
+    assert_field "one_diary_date", with: "2024-11-15"
+    click_on "決定"
+    assert_text "日記の作成に成功しました"
+    assert_text "duplicate browser date"
   end
 end

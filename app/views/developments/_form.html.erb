@@ -1,0 +1,27 @@
+<%= form_with(model: development) do |form| %>
+  <% if development.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(development.errors.count, "error") %> prohibited this development from being saved:</h2>
+
+      <ul>
+        <% development.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :title, "タイトル", style: "display: block" %>
+    <%= form.text_field :title,  class:"title form-control" %>
+  </div>
+
+  <div>
+    <%= form.label :content, "内容", style: "display: block" %>
+    <%= form.text_area :content, class:"content form-control" %>
+  </div>
+
+  <div>
+    <%= form.submit "決定", class: "btn btn-primary my-3" %>
+  </div>
+<% end %>

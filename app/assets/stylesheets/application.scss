@@ -1,61 +1,213 @@
 @import "bootstrap";
 @import "simple_calendar";
-@import "font-awesome-sass";
-@import '~@fortawesome/fontawesome-free/scss/fontawesome';
 
 .all {
-  width:1800px;
- 
   margin-left: auto;
   margin-right: auto;
-  background-color: #ffffff;
-  height:2000px;
+  width: 1500px;
 }
-.title {
-  // 固定幅
-  height: 70px;  // 自動で左右中央揃え
-}
+
 .main-content {
-  /* メインコンテンツが残りのスペースを占める */
   padding: 20px;
   margin-left: auto;
   margin-right: auto;
-  background-color: #ffffff;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-  height:2000px;
+}
+
+.main-design {
+  padding: 20px;
+  border-radius: 20px;
+}
+
+table {
+  background-color: #edfefb;
 }
 
 .diary {
-  width: 1000px; 
+  width: 1000px;
 }
 
 .side-bar {
   top: 0;
-  height: 100%;
-  height:1300px;
-  width:500px;
-  background-color: #ffffff;
-  height:2000px;
+  width: 500px;
 }
 
 .container {
-  display: flex;  /* Flexboxを使用 */
-  justify-content: space-between;  /* サイドバーとメインコンテンツをスペースを空けて配置 */
-  gap: 10px;  /* サイドバーとメインコンテンツの間隔 */
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
   margin: 20px;
-  height:2000px;
 }
 
 .right {
   position: absolute;
-  right: 0; /* 右寄せ */
+  right: 0;
 }
-
 .text {
-  width: 1500px;
-  height: 700px;
+  width: 1200px;
+  height: 500px;
+  border-color: black;
 }
 
 .content {
-  height: 700px;
+  font-size: 20px;
+  border-color: black;
+  height: 300px;
+}
+
+.next-title {
+  color: inherit;
+  text-decoration: none;
+  border-color: black;
+}
+
+.login-status {
+  background-color: #c7e2fd;
+}
+
+.next-title:hover {
+  color: blue;
+  text-decoration: none;
+}
+
+.today_log {
+  color: inherit;
+  text-decoration: none;
+  border-color: black;
+}
+
+.today_log:hover {
+  color: blue;
+  text-decoration: none;
+}
+
+.title {
+  font-size: 20px;
+  height: 40px;
+  width: 600px;
+  border-color: black;
+}
+
+.important_status {
+  border-color: black;
+}
+
+.status {
+  border-color: black;
+}
+
+h1 {
+  margin: 0px;
+}
+
+.sns {
+  color: rgb(222, 252, 235);
+
+  background-color: rgb(2, 154, 68);
+  text-decoration: none;
+  border-color: black;
+}
+
+.sns-only {
+  text-decoration: none;
+  color: rgb(186, 246, 212);
+}
+
+.sns:hover .sns-only {
+  text-decoration: none;
+  color: rgb(27, 103, 60);
+}
+
+.sns:hover {
+  color: rgb(27, 103, 60);
+  background-color: rgb(211, 251, 228);
+  text-decoration: none;
+}
+
+.every-task:hover {
+  background-color: rgb(209, 251, 229);
+}
+
+.important-task:hover {
+  background-color: rgb(248, 194, 194);
+}
+
+.normal-task:hover {
+  background-color: rgb(194, 227, 252);
+}
+
+.input_select {
+  border-color: black;
+}
+
+.side-bar:hover {
+  background-color: rgb(208, 207, 207);
+}
+
+.search:hover {
+  background-color: rgb(187, 251, 235);
+}
+
+.day_calendar:hover {
+  background-color: rgb(187, 251, 235);
+}
+
+.sns-list {
+  background-color: rgb(219, 251, 253);
+}
+
+.main-title {
+  color: rgb(19, 83, 203);
+  background-color: rgb(110, 239, 248);
+}
+
+.day-deadline {
+  border-color: black;
+  width: 100px;
+}
+
+.diary-color {
+  color: red;
+}
+
+.today_content:hover {
+  background-color: rgb(248, 241, 204);
+}
+
+.table-color {
+  background-color: #100e0e;
+  border-width: 100px;
+}
+
+.div_container {
+  display: grid;
+  grid-template-columns: 300px 300px 300px 300px;
+  gap: 10px;
+}
+
+.div_item:hover {
+  background-color: rgb(248, 241, 204);
+}
+
+.div_item {
+  padding: 10px;
+  height: 120px;
+  width: 300px;
+}
+
+.flash-message {
+  border-radius: 5px;
+  padding: 16px 24px;
+  margin: 16px 0px;
+}
+
+.flash-message.notice {
+  background-color: #bcdfff;
+  color: #0067c0;
+  border: solid 1px #0067c0;
+}
+
+.flash-message.danger {
+  background-color: #ffbcbc;
+  color: #c00000;
+  border: solid 1px #c00000;
 }

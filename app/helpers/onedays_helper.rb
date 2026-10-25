@@ -1,0 +1,2 @@
+module OnedaysHelper
+end

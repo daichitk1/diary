@@ -1,0 +1,14 @@
+<% content_for :title, "Developments" %>
+
+<h1>開発一覧</h1>
+
+<div class="div_container">
+  <% @developments.each do |development| %>
+    <div class="div_item" style="margin-bottom: 10px; border: 1px solid #333333; border-radius: 10px;">
+      <h3 style="height: 30px;"><%= development.title %></h3><br>
+      <%= link_to "詳細を見る", development, class: "btn btn-outline-primary" %>
+    </div>
+  <% end %>
+</div>
+
+<%= link_to "新規開発メモ", new_development_path, class: "btn btn-outline-primary my-2" %>

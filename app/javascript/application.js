@@ -1,7 +1,8 @@
-// Configure your import map in config/importmap.rb. Read more: https://github.com/rails/importmap-rails
+// Import maps load this module once; delegated listeners survive Turbo navigation.
 import "@hotwired/turbo-rails"
-import "controllers"
-import * as bootstrap from "bootstrap"
-import '@fortawesome/fontawesome-free/js/all';
-import * as ActiveStorage from "@rails/activestorage"
-ActiveStorage.start()
+
+document.addEventListener("input", (event) => {
+  if (event.target.matches?.("#colorPicker")) {
+    document.body.style.backgroundColor = event.target.value
+  }
+})

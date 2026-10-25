@@ -1,18 +1,14 @@
-<p style="color: green"><%= notice %></p>
-<%= link_to "新規メモ", new_memo_path, class: "btn btn-primary"  %>
+<%= link_to "新規メモ", new_memo_path, class: "btn btn-outline-primary"  %>
 <% content_for :title, "Memos" %>
 
 
+<h1>メモ一覧</h1>
 <%= form_with url: memos_path, method: :get, local: true do %>
-  <div class="my-3">
-    <%= label_tag :query, "検索" %>
-    <%= text_field_tag :query, params[:query], placeholder: "キーワードを入力",  class: 'form-control w-25 my-3' %>
-    <%= submit_tag "検索" %>
+  <div class="my-3 d-flex align-items-center">
+    <%= text_field_tag :query, params[:query], placeholder: "キーワードを入力",  class: 'form-control w-25 m-1 title' %>
+    <%= submit_tag "検索", class: "btn btn-outline-primary" %>
   </div>
 <% end %>
-
-<h1>メモ一覧</h1>
-
 <div id="memos">
   <% @memos.each do |memo| %>
     <div>

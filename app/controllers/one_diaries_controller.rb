@@ -1,11 +1,9 @@
 class OneDiariesController < ApplicationController
-  before_action :logged_in_user
   before_action :set_one_diary, only: %i[ show edit update destroy ]
 
   # GET /one_diaries or /one_diaries.json
   def index
     @one_diaries = OneDiary.all
-
   end
 
   # GET /one_diaries/1 or /one_diaries/1.json
@@ -15,52 +13,48 @@ class OneDiariesController < ApplicationController
   # GET /one_diaries/new
   def new
     @one_diary = OneDiary.new
+    @today_posts = Post.where("DATE(start_time) = ?", Date.today)
+    @today_memos = Memo.where("DATE(created_at) = ?", Date.today)
   end
 
   # GET /one_diaries/1/edit
   def edit
-  
+    @today_posts = Post.where("DATE(start_time) = ?", Date.today)
+    @today_memos = Memo.where("DATE(created_at) = ?", Date.today)
   end
 
   # POST /one_diaries or /one_diaries.json
   def create
     @one_diary = OneDiary.new(one_diary_params)
     @one_diary.images.attach(params[:images])
-    respond_to do |format|
-      if @one_diary.save
-        format.html { redirect_to @one_diary, notice: "One diary was successfully created." }
-        format.json { render :show, status: :created, location: @one_diary }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @one_diary.errors, status: :unprocessable_entity }
-      end
+    if @one_diary.save
+      flash[:notice] = "日記の作成に成功しました"
+      redirect_to @one_diary, status: :see_other
+    else
+      flash.now[:notice] = "日記の作成に失敗しました"
+      render :new, status: :unprocessable_entity
     end
   end
 
   # PATCH/PUT /one_diaries/1 or /one_diaries/1.json
   def update
     @one_diary.images.attach(params[:images])
-    respond_to do |format|
-      if @one_diary.update(one_diary_params)
-        format.html { redirect_to @one_diary, notice: "One diary was successfully updated." }
-        format.json { render :show, status: :ok, location: @one_diary }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @one_diary.errors, status: :unprocessable_entity }
-      end
+    if @one_diary.update(one_diary_params)
+      flash[:notice] = "日記の更新に成功しました"
+      redirect_to @one_diary, status: :see_other
+    else
+      flash.now[:notice] = "日記の更新に失敗しました"
+      render :edit, status: :unprocessable_entity
     end
   end
 
   # DELETE /one_diaries/1 or /one_diaries/1.json
   def destroy
-    @one_diary.destroy!
-
-    respond_to do |format|
-      format.html { redirect_to one_diaries_path, status: :see_other, notice: "One diary was successfully destroyed." }
-      format.json { head :no_content }
+    if @one_diary.destroy
+      flash[:danger] = "日記が削除されました"
+      redirect_to one_diaries_path, status: :see_other
     end
   end
-
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_one_diary
