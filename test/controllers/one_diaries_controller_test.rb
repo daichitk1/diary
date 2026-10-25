@@ -17,7 +17,7 @@ class OneDiariesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create one_diary" do
     assert_difference("OneDiary.count") do
-      post one_diaries_url, params: { one_diary: { content: @one_diary.content, date: @one_diary.date, title: @one_diary.title } }
+      post one_diaries_url, params: { one_diary: { content: @one_diary.content, date: Date.new(2024, 11, 15), title: @one_diary.title } }
     end
 
     assert_redirected_to one_diary_url(OneDiary.last)

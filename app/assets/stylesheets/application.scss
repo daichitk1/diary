@@ -5,37 +5,42 @@
   margin-left: auto;
   margin-right: auto;
   width: 1500px;
-  background-color: #ffffff;
 }
 
 .main-content {
   padding: 20px;
   margin-left: auto;
   margin-right: auto;
-  background-color: #ffffff;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.main-design {
+  padding: 20px;
+  border-radius: 20px;
+}
+
+table {
+  background-color: #edfefb;
 }
 
 .diary {
-  width: 1000px; 
+  width: 1000px;
 }
 
 .side-bar {
   top: 0;
-  width:500px;
-  background-color: #ffffff;
+  width: 500px;
 }
 
 .container {
-  display: flex;  
-  justify-content: space-between;  
-  gap: 10px; 
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
   margin: 20px;
 }
 
 .right {
   position: absolute;
-  right: 0; 
+  right: 0;
 }
 .text {
   width: 1200px;
@@ -54,7 +59,6 @@
   text-decoration: none;
   border-color: black;
 }
-
 
 .login-status {
   background-color: #c7e2fd;
@@ -83,14 +87,21 @@
   border-color: black;
 }
 
+.important_status {
+  border-color: black;
+}
+
+.status {
+  border-color: black;
+}
 
 h1 {
- margin: 0px;
+  margin: 0px;
 }
 
 .sns {
   color: rgb(222, 252, 235);
-  
+
   background-color: rgb(2, 154, 68);
   text-decoration: none;
   border-color: black;
@@ -106,14 +117,11 @@ h1 {
   color: rgb(27, 103, 60);
 }
 
-
 .sns:hover {
   color: rgb(27, 103, 60);
   background-color: rgb(211, 251, 228);
   text-decoration: none;
 }
-
-
 
 .every-task:hover {
   background-color: rgb(209, 251, 229);
@@ -163,4 +171,43 @@ h1 {
 
 .today_content:hover {
   background-color: rgb(248, 241, 204);
+}
+
+.table-color {
+  background-color: #100e0e;
+  border-width: 100px;
+}
+
+.div_container {
+  display: grid;
+  grid-template-columns: 300px 300px 300px 300px;
+  gap: 10px;
+}
+
+.div_item:hover {
+  background-color: rgb(248, 241, 204);
+}
+
+.div_item {
+  padding: 10px;
+  height: 120px;
+  width: 300px;
+}
+
+.flash-message {
+  border-radius: 5px;
+  padding: 16px 24px;
+  margin: 16px 0px;
+}
+
+.flash-message.notice {
+  background-color: #bcdfff;
+  color: #0067c0;
+  border: solid 1px #0067c0;
+}
+
+.flash-message.danger {
+  background-color: #ffbcbc;
+  color: #c00000;
+  border: solid 1px #c00000;
 }

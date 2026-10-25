@@ -1,12 +1,11 @@
 <% content_for :title, "Editing development" %>
 
-<h1>Editing development</h1>
-
+<h1>開発の編集</h1>
+<%= link_to "開発一覧", developments_path, class: "btn btn-outline-primary m-2" %>
 <%= render "form", development: @development %>
 
 <br>
 
 <div>
-  <%= link_to "Show this development", @development %> |
-  <%= link_to "Back to developments", developments_path %>
+  <%= link_to "この開発を見る", @development, class: "btn btn-outline-primary m-2" %> 
 </div>
