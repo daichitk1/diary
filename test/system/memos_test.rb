@@ -2,42 +2,37 @@ require "application_system_test_case"
 
 class MemosTest < ApplicationSystemTestCase
   setup do
-    @memo = memos(:one)
+    @record = memos(:one)
   end
 
   test "visiting the index" do
     visit memos_url
-    assert_selector "h1", text: "Memos"
+    assert_selector "h1", text: "メモ一覧"
   end
 
-  test "should create memo" do
+  test "create record through the existing Japanese form" do
     visit memos_url
-    click_on "New memo"
-
-    fill_in "Content", with: @memo.content
-    fill_in "Title", with: @memo.title
-    click_on "Create Memo"
-
-    assert_text "Memo was successfully created"
-    click_on "Back"
+    click_on "新規メモ"
+    fill_in "memo_title", with: "system created"
+    fill_in "memo_content", with: "synthetic content"
+    click_on "決定"
+    assert_text "メモの作成に成功しました"
+    assert_text "system created"
   end
 
-  test "should update Memo" do
-    visit memo_url(@memo)
-    click_on "Edit this memo", match: :first
-
-    fill_in "Content", with: @memo.content
-    fill_in "Title", with: @memo.title
-    click_on "Update Memo"
-
-    assert_text "Memo was successfully updated"
-    click_on "Back"
+  test "update record through the existing Japanese form" do
+    visit memo_url(@record)
+    click_on "メモ編集", match: :first
+    fill_in "memo_title", with: "system updated"
+    click_on "決定"
+    assert_text "メモの更新に成功しました"
+    assert_text "system updated"
   end
 
-  test "should destroy Memo" do
-    visit memo_url(@memo)
-    click_on "Destroy this memo", match: :first
-
-    assert_text "Memo was successfully destroyed"
+  test "destroy record through confirmation" do
+    visit memo_url(@record)
+    accept_confirm { click_on "削除", match: :first }
+    assert_text "メモの削除に成功しました"
+    assert_not Memo.exists?(@record.id)
   end
 end

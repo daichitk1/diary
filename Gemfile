@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem "rails", "~> 7.2.1", ">= 7.2.1.1"
+gem "rails", "~> 8.1.0"
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
 # Use sqlite3 as the database for Active Record
@@ -31,14 +31,12 @@ gem "tzinfo-data", platforms: %i[ windows jruby ]
 
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
-source 'https://rubygems.org'
-gem 'pry-rails'
-gem 'bcrypt', '~> 3.1.7'
-gem 'simple_calendar', '~> 2.0' 
-gem 'kaminari'
-gem 'bootstrap', '~> 5.3'
-gem 'sassc-rails'
-gem 'font-awesome-rails'
+gem "pry-rails"
+gem "bcrypt", "~> 3.1.7"
+gem "kaminari"
+gem "bootstrap", "~> 5.3"
+gem "sassc-rails"
+gem "font-awesome-rails"
 gem "image_processing", "~> 1.2"
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
@@ -56,7 +54,7 @@ end
 
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
-  gem 'rubocop', require: false
+  gem "rubocop", require: false
   gem "web-console"
 end
 
@@ -66,5 +64,5 @@ group :test do
   gem "selenium-webdriver"
 end
 
-gem 'sqlite3', group: [:development, :test]
-gem 'pg', group: :production
+gem "sqlite3", group: [ :development, :test ]
+gem "pg", group: :production

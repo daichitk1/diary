@@ -33,3 +33,20 @@
 おそらく、http://127.0.0:3000<br><br>
 </div>
 <b>注意事項</b>ローカル環境でユーザー1人が利用する前提で作成しています(セキュリティなど不備があることが考えられるため)
+
+
+## 依存更新の検証
+
+Rails 8.1 系で検証しています。既存の `config.load_defaults 7.2` とスキーマは維持しています。単一ユーザー向けの既存動作を維持し、削除済みのログイン機能は追加しません。
+
+テスト用 SQLite は `storage/test.sqlite3` です。開発 DB と共有しません。実データのあるディレクトリではなく、独立したチェックアウトで以下を実行してください。
+
+```sh
+bundle install
+bin/brakeman --no-pager
+bin/importmap audit
+bin/rubocop
+RAILS_ENV=test bin/rails db:test:prepare test test:system
+```
+
+カレンダーは一覧・日付別詳細を検証します。Oneday の未実装 CRUD や削除済みログインの雛形テストではなく、既存の日本語 UI、日記・メモ・開発メモの作成・編集・削除をブラウザで検証します。日記の日付重複、テスト DB 分離、カレンダー描画と日付絞り込みを回帰テストしています。CI は main/aa の push と PR で既存の4ジョブを実行します。

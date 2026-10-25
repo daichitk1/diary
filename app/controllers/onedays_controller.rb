@@ -4,13 +4,11 @@ class OnedaysController < ApplicationController
   end
 
   def concrete
-    @posts = Post.where("DATE(start_time) = ?", "#{params[:date]}%")
-    @today_memos = Memo.where("DATE(created_at) = ?", "#{params[:date]}%")
-    @one_diaries = OneDiary.where("DATE(created_at) = ?", "#{params[:date]}%")
+    date = Date.iso8601(params[:date].to_s)
+    @posts = Post.where("DATE(start_time) = ?", date)
+    @memos = Memo.where("DATE(created_at) = ?", date)
+    @one_diaries = OneDiary.where(date: date)
+  rescue Date::Error
+    head :bad_request
   end
-
-  private
-    def oneday_params
-      params.require(:oneday).permit(:date)
-    end
 end

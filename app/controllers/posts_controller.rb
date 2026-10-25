@@ -5,8 +5,8 @@ class PostsController < ApplicationController
     today = Date.today
     @every_day_posts = Post.where(important_status: 2).order(created_at: :desc)
     @important_posts = Post.where(important_status: 1).order(created_at: :desc)
-    @unprocessed_posts = Post.where(created_at: today.beginning_of_day..today.end_of_day,status: 0, important_status: 0).order(created_at: :desc).limit(15)
-    @progress_posts = Post.where(created_at: today.beginning_of_day..today.end_of_day,status: 1, important_status: 0).order(created_at: :desc).limit(15)
+    @unprocessed_posts = Post.where(created_at: today.beginning_of_day..today.end_of_day, status: 0, important_status: 0).order(created_at: :desc).limit(15)
+    @progress_posts = Post.where(created_at: today.beginning_of_day..today.end_of_day, status: 1, important_status: 0).order(created_at: :desc).limit(15)
     @posts = Post.where.not(important_status: 2).where.not(status: 2)
     @one_diaries = OneDiary.order(created_at: :desc).limit(20)
     @memos = Memo.order(created_at: :desc).limit(20)
@@ -25,7 +25,7 @@ class PostsController < ApplicationController
       flash[:notice] = "タスクの作成に成功しました"
       redirect_to @post, status: :see_other
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -37,7 +37,7 @@ class PostsController < ApplicationController
       redirect_to @post, status: :see_other
     else
       flash.now[:notice] = "タスクの更新に失敗しました"
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 
@@ -52,7 +52,6 @@ class PostsController < ApplicationController
   end
 
   def all
-
     @posts = Post.all
     if params[:input_important] != "" && params[:input_important].present?
       @posts = @posts.where(important_status: params[:input_important])
@@ -80,4 +79,3 @@ class PostsController < ApplicationController
     params.require(:memo).permit(:title, :content)
   end
 end
-  
