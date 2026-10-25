@@ -36,4 +36,23 @@ class OnedaysControllerTest < ActionDispatch::IntegrationTest
       assert_response :bad_request
     end
   end
+  test "calendar navigation treats untrusted URL options as query data" do
+    [
+      { host: "untrusted.invalid", protocol: "https" },
+      { original_script_name: "javascript:alert(1)//" },
+      { use_route: "nonexistent_route" }
+    ].each do |query|
+      get onedays_url, params: query.merge(start_date: "2024-11-13")
+      assert_response :success
+      links = css_select(".calendar-heading a")
+      assert_equal 2, links.length
+      links.each do |link|
+        uri = URI.parse(link["href"])
+        assert_nil uri.host
+        assert_nil uri.scheme
+        assert_equal onedays_path, uri.path
+        assert_includes URI.decode_www_form(uri.query).to_h, "start_date"
+      end
+    end
+  end
 end
