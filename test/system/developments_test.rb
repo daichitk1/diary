@@ -2,42 +2,37 @@ require "application_system_test_case"
 
 class DevelopmentsTest < ApplicationSystemTestCase
   setup do
-    @development = developments(:one)
+    @record = developments(:one)
   end
 
   test "visiting the index" do
     visit developments_url
-    assert_selector "h1", text: "Developments"
+    assert_selector "h1", text: "開発一覧"
   end
 
-  test "should create development" do
+  test "create record through the existing Japanese form" do
     visit developments_url
-    click_on "New development"
-
-    fill_in "Content", with: @development.content
-    fill_in "Title", with: @development.title
-    click_on "Create Development"
-
-    assert_text "Development was successfully created"
-    click_on "Back"
+    click_on "新規開発メモ"
+    fill_in "development_title", with: "system created"
+    fill_in "development_content", with: "synthetic content"
+    click_on "決定"
+    assert_text "開発の作成に成功しました"
+    assert_text "system created"
   end
 
-  test "should update Development" do
-    visit development_url(@development)
-    click_on "Edit this development", match: :first
-
-    fill_in "Content", with: @development.content
-    fill_in "Title", with: @development.title
-    click_on "Update Development"
-
-    assert_text "Development was successfully updated"
-    click_on "Back"
+  test "update record through the existing Japanese form" do
+    visit development_url(@record)
+    click_on "編集", match: :first
+    fill_in "development_title", with: "system updated"
+    click_on "決定"
+    assert_text "開発の更新に成功しました"
+    assert_text "system updated"
   end
 
-  test "should destroy Development" do
-    visit development_url(@development)
-    click_on "Destroy this development", match: :first
-
-    assert_text "Development was successfully destroyed"
+  test "destroy record through confirmation" do
+    visit development_url(@record)
+    accept_confirm { click_on "削除", match: :first }
+    assert_text "開発の削除に成功しました"
+    assert_not Development.exists?(@record.id)
   end
 end

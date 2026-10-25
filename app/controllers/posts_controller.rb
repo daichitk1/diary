@@ -1,16 +1,15 @@
 class PostsController < ApplicationController
-  before_action :logged_in_user, except: [:index]
   def index
-    @today_posts = Post.where('start_time LIKE ?', "#{Time.now.strftime( "%Y-%m-%d")}%")
-    @today_memos = Memo.where('created_at LIKE ?', "#{Time.now.strftime( "%Y-%m-%d")}%")
+    @today_posts = Post.where("DATE(start_time) = ?", Date.today)
+    @today_memos = Memo.where("DATE(created_at) = ?", Date.today)
     today = Date.today
     @every_day_posts = Post.where(important_status: 2).order(created_at: :desc)
     @important_posts = Post.where(important_status: 1).order(created_at: :desc)
-    @unprocessed_posts = Post.where(created_at: today.beginning_of_day..today.end_of_day,status: 0, important_status: 0).order(created_at: :desc).limit(15)
-    @progress_posts = Post.where(created_at: today.beginning_of_day..today.end_of_day,status: 1, important_status: 0).order(created_at: :desc).limit(15)
+    @unprocessed_posts = Post.where(created_at: today.beginning_of_day..today.end_of_day, status: 0, important_status: 0).order(created_at: :desc).limit(15)
+    @progress_posts = Post.where(created_at: today.beginning_of_day..today.end_of_day, status: 1, important_status: 0).order(created_at: :desc).limit(15)
     @posts = Post.where.not(important_status: 2).where.not(status: 2)
-    @one_diaries = OneDiary.all
-    @memos = Memo.all
+    @one_diaries = OneDiary.order(created_at: :desc).limit(20)
+    @memos = Memo.order(created_at: :desc).limit(20)
   end
 
   def new
@@ -26,18 +25,19 @@ class PostsController < ApplicationController
       flash[:notice] = "タスクの作成に成功しました"
       redirect_to @post, status: :see_other
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
+
   def update
     @post = Post.find(params[:id])
-    @post.clear_tags_by_condition(params[:id])
     if @post.update(post_params)
       flash[:notice] = "タスクの更新に成功しました"
       redirect_to @post, status: :see_other
     else
-      render :edit
+      flash.now[:notice] = "タスクの更新に失敗しました"
+      render :edit, status: :unprocessable_entity
     end
   end
 
@@ -52,14 +52,13 @@ class PostsController < ApplicationController
   end
 
   def all
-
     @posts = Post.all
     if params[:input_important] != "" && params[:input_important].present?
       @posts = @posts.where(important_status: params[:input_important])
     end
     if params[:input_status] != "" && params[:input_status].present?
       @posts = @posts.where(status: params[:input_status])
-    end  
+    end
   end
 
   def destroy
@@ -80,4 +79,3 @@ class PostsController < ApplicationController
     params.require(:memo).permit(:title, :content)
   end
 end
-  

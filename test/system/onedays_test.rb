@@ -1,39 +1,20 @@
 require "application_system_test_case"
 
 class OnedaysTest < ApplicationSystemTestCase
-  setup do
-    @oneday = onedays(:one)
+  test "calendar navigates to the selected day and back" do
+    visit onedays_url(start_date: "2024-11-13")
+    assert_selector "h1", text: "記録一覧ページ"
+    find("a[href='#{one_days_concrete_path(date: '2024-11-13')}']", match: :first).click
+    assert_selector "h1", text: "2024-11-13の記録"
+    click_on "記録一覧ページ", match: :first
+    assert_selector "h1", text: "記録一覧ページ"
   end
-
-  test "visiting the index" do
-    visit onedays_url
-    assert_selector "h1", text: "Onedays"
-  end
-
-  test "should create oneday" do
-    visit onedays_url
-    click_on "New oneday"
-
-    click_on "Create Oneday"
-
-    assert_text "Oneday was successfully created"
-    click_on "Back"
-  end
-
-  test "should update Oneday" do
-    visit oneday_url(@oneday)
-    click_on "Edit this oneday", match: :first
-
-    click_on "Update Oneday"
-
-    assert_text "Oneday was successfully updated"
-    click_on "Back"
-  end
-
-  test "should destroy Oneday" do
-    visit oneday_url(@oneday)
-    click_on "Destroy this oneday", match: :first
-
-    assert_text "Oneday was successfully destroyed"
+  test "month navigation preserves calendar rendering across Turbo visits" do
+    visit onedays_url(start_date: "2024-11-13")
+    click_on "来月", match: :first
+    assert_selector ".calendar-title", text: "December 2024"
+    assert_selector "td.day_calendar a[href='#{one_days_concrete_path(date: '2024-12-01')}']"
+    click_on "先月", match: :first
+    assert_selector ".calendar-title", text: "November 2024"
   end
 end

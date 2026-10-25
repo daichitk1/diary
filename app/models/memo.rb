@@ -1,6 +1,6 @@
 class Memo < ApplicationRecord
   before_validation :set_default_title, on: :create
- 
+
 
   private
 

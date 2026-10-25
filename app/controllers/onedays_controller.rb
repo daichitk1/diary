@@ -1,17 +1,14 @@
 class OnedaysController < ApplicationController
-  before_action :logged_in_user
   def index
     @onedays = Oneday.all
   end
 
   def concrete
-    @posts = Post.where('start_time LIKE ?', "#{params[:date]}%")
-    @memos = Memo.where('created_at LIKE ?', "#{params[:date]}%")
-    @one_diaries = OneDiary.where('created_at LIKE ?', "#{params[:date]}%")
-  end 
-
-  private
-    def oneday_params
-      params.require(:oneday).permit(:date)
-    end
+    date = Date.iso8601(params[:date].to_s)
+    @posts = Post.where("DATE(start_time) = ?", date)
+    @memos = Memo.where("DATE(created_at) = ?", date)
+    @one_diaries = OneDiary.where(date: date)
+  rescue Date::Error
+    head :bad_request
+  end
 end

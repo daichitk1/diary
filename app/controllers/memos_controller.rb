@@ -1,5 +1,4 @@
 class MemosController < ApplicationController
-  before_action :logged_in_user
   before_action :set_memo, only: %i[ show edit update destroy ]
 
   # GET /memos or /memos.json
@@ -42,17 +41,17 @@ class MemosController < ApplicationController
       redirect_to memo_path(@memo), status: :see_other
     else
       flash.now[:notice] = "日記の更新に失敗しました"
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
-  
+
 
   def destroy
     if @memo.destroy
       flash[:danger] = "メモの削除に成功しました"
       redirect_to memos_path, status: :see_other
     end
-  end 
+  end
 
 
   private

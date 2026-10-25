@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
   <head>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   <script src="https://kit.fontawesome.com/357d3b79de.js" crossorigin="anonymous"></script>
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbo-track': 'reload' %>
     <title><%= content_for(:title) || "Diary" %></title>
@@ -12,7 +11,6 @@
     <%= yield :head %>
 
     <link href=”https://use.fontawesome.com/releases/v6.0.0/css/all.css” rel=”stylesheet”>
-    <link rel="manifest" href="/manifest.json">
     <link rel="icon" href="/icon.png" type="image/png">
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/icon.png">
@@ -22,15 +20,8 @@
 
   <div class="all">
     <header>
-      <h1 class="py-1 px-3 main-title">猫と山と人生⛰️</h1>
+      <h1 class="py-1 px-3 main-title">自己総合管理ツール</h1>
     </header>
-    <% if logged_in? %>
-      <div class="login-status d-flex align-items-center" style="padding: 10px;  border: 1px solid #333333; border-radius: 10px;">
-        ログイン中です。メールアドレス: <%= current_user.email %>
-        <%= link_to 'ログアウト', logout_path, method: :delete, data: { turbo_method: :delete, turbo_confirm: '本当にログアウトしますか'}, class: "btn btn-outline-danger mx-3" %>
-      </div>
-    <% end %>
-    <% if logged_in? %> 
       <div>
         <%= link_to 'メインページ', posts_path, class: "btn btn-primary" %>
         <%= link_to 'タスク一覧', posts_all_path, class: "btn btn-secondary" %>
@@ -38,7 +29,7 @@
         <%= link_to 'メモ一覧', memos_path, class: "btn btn-success" %>
         <%= link_to '開発一覧', developments_path, class: "btn btn-warning" %>
         <%= link_to '記録一覧', onedays_path, class: "btn btn-info mx-5" %>
-       <a href="http://127.0.0.1:4000", class="btn btn-info">ポートフォリオ</a>
+       <a href="https://react-portfolio.cat-and-mountain.com", class="btn btn-info">ポートフォリオ</a>
       </div>
       <div class="mx-3 my-4 d-flex justify-content-start sns-list" style="padding: 10px; margin-bottom: 10px; border: 1px solid #333333; border-radius: 10px;">
         <div class="sns mx-2" style="padding: 10px; border: 1px solid #333333; border-radius: 10px;">
@@ -54,7 +45,7 @@
           </a>
         </div>
         <div class="sns mx-2" style="padding: 10px; border: 1px solid #333333; border-radius: 10px;">
-          <a class="sns-only" href="https://github.com/daichitk1/diary" target="_blank">
+          <a class="sns-only" href="https://github.com/daichitk1" target="_blank">
             Git hub
             <i class="fa-brands fa-github"></i>
           </a>
@@ -66,27 +57,9 @@
           </a>
         </div>
         <div class="sns mx-2" style="padding: 10px; border: 1px solid #333333; border-radius: 10px;">
-          <a class="sns-only" href="https://catandmountain.wordpress.com/wp-admin/" target="_blank">
-            個人ブログ
-            <i class="fa-solid fa-blog"></i>
-          </a>
-        </div>
-        <div class="sns mx-2" style="padding: 10px; border: 1px solid #333333; border-radius: 10px;">
-          <a class="sns-only" href="https://yamap.com" target="_blank">
-            YAMAP
-            <i class="fa-regular fa-mountain"></i>
-          </a>
-        </div>
-        <div class="sns mx-2" style="padding: 10px; border: 1px solid #333333; border-radius: 10px;">
           <a class="sns-only" href="https://www.instagram.com" target="_blank">
             Instagram
             <i class="fa-brands fa-instagram"></i>
-          </a>
-        </div>
-        <div class="sns mx-2" style="padding: 10px; border: 1px solid #333333; border-radius: 10px;">
-          <a class="sns-only" href="https://www.tiktok.com/foryou?lang=ja-JP" target="_blank">
-            Tik Tok
-            <i class="fa-brands fa-tiktok"></i>
           </a>
         </div>
         <div class="sns mx-2" style="padding: 10px; border: 1px solid #333333; border-radius: 10px;">
@@ -102,30 +75,21 @@
           </a>
         </div>
         <div class="sns mx-2" style="padding: 10px; border: 1px solid #333333; border-radius: 10px;">
-          <a class="sns-only" href="https://www.wantedly.com/id/daichi_takei_b" target="_blank">
-            wantedly
-            <i class="fa-solid fa-w"></i>
-          </a>
-        </div>
-        <div class="sns mx-2" style="padding: 10px; border: 1px solid #333333; border-radius: 10px;">
           <a class="sns-only" href="https://x.com/home" target="_blank">
             <i class="fa-solid fa-x"></i>
           </a>
         </div>
       </div>
-    <% end %>
     <body>
       <div class="d-flex justify-content-between">
-        <h2><%= Time.now.strftime('%m月%d日 %H時%M分') %></h2>
-        <% if OneDiary.where('created_at LIKE ?', "#{Time.now.strftime( "%Y-%m-%d")}%").count == 0 %>
+        <% if OneDiary.where("DATE(created_at) = ?", Date.today).count == 0 %>
           <h2><%= link_to "まだ本日の日記が作成されておりません", new_one_diary_path, class: "diary-color" %></h2>
         <% end %>
       </div>
       <% flash.each do |message_type, message| %>
         <div class="flash-message <%= message_type %>"><%= message %></div>
       <% end %>
-      <div style="padding: 10px; margin-bottom: 10px; border: 2px solid #333333; border-radius: 10px;">
-      <input id="colorPicker" type="color">
+      <div class="main-design">
         <%= yield %>
       </div>
     </body>
