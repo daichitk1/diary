@@ -15,7 +15,8 @@ class OneDiariesTest < ApplicationSystemTestCase
     click_on "新規作成"
     fill_in "one_diary_title", with: "system created"
     fill_in "one_diary_content", with: "synthetic content"
-    fill_in "one_diary_date", with: "2024-11-15"
+    fill_in "one_diary_date", with: Date.new(2024, 11, 15)
+    assert_field "one_diary_date", with: "2024-11-15"
     click_on "決定"
     assert_text "日記の作成に成功しました"
     assert_text "system created"
@@ -40,10 +41,12 @@ class OneDiariesTest < ApplicationSystemTestCase
     visit new_one_diary_url
     fill_in "one_diary_title", with: "duplicate browser date"
     fill_in "one_diary_content", with: "synthetic content"
-    fill_in "one_diary_date", with: "2024-11-13"
+    fill_in "one_diary_date", with: @record.date
+    assert_field "one_diary_date", with: @record.date.iso8601
     click_on "決定"
     assert_text "prohibited this one_diary"
-    fill_in "one_diary_date", with: "2024-11-15"
+    fill_in "one_diary_date", with: Date.new(2024, 11, 15)
+    assert_field "one_diary_date", with: "2024-11-15"
     click_on "決定"
     assert_text "日記の作成に成功しました"
     assert_text "duplicate browser date"
