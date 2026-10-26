@@ -85,8 +85,8 @@ GEM
     benchmark (0.4.0)
     bigdecimal (3.1.9)
     bindex (0.8.1)
-    bootsnap (1.18.4)
-      msgpack (~> 1.2)
+    bootsnap (1.26.0)
+      msgpack (~> 1.5)
     bootstrap (5.3.3)
       autoprefixer-rails (>= 9.1.0)
       popper_js (>= 2.11.8, < 3)
@@ -175,7 +175,7 @@ GEM
       logger
     mini_mime (1.1.5)
     minitest (5.25.5)
-    msgpack (1.8.0)
+    msgpack (1.8.5)
     net-imap (0.6.8)
       date
       net-protocol
